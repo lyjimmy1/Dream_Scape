@@ -36,7 +36,3 @@ dispatch(updateMyState(newState));
 // anytime i see that i am ONLY using the value to pass it as a prop
 // i should just remove it from that component all together
 ```
-
-## Redux Reminders
-1. The reason we're refactoring auth to 
-is because we want user information to be available on any component without passing props. any information that is only being used on one component doesn't need to be in the store, so using local state
