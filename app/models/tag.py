@@ -6,6 +6,6 @@ class Tag(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(255), nullable = False)
-    entry_id=db.Column(db.String(255), ForeignKey('entries.id'))
+    entry_id=db.Column(db.Integer, ForeignKey('entries.id'))
 
-    entry=db.relationship("Entry", back_populates="tags", lazy='dynamic') 
+    entry=db.relationship("Entry", back_populates="tags", lazy='dynamic')
