@@ -13,6 +13,6 @@ class Entry(db.Model):
     record_id=db.Column(db.Integer, ForeignKey('records.id'), nullable=False)
     user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
 
-    record=db.relationship("Record", back_populates="entries", lazy='dynamic')
-    user=db.relationship("User", back_populates="entries", lazy='dynamic')
-    tags=db.relationship("Tag", back_populates="entry", lazy='dynamic')
+    record=db.relationship("Record", back_populates="entries")
+    user=db.relationship("User", back_populates="entries")
+    tags=db.relationship("Tag", back_populates="entry")

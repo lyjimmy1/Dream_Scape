@@ -11,8 +11,8 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
 
-  entries=db.relationship("Entry", back_populates="user", lazy='dynamic')
-  records=db.relationship("Record", back_populates="user", lazy='dynamic')
+  entries=db.relationship("Entry", back_populates="user")
+  records=db.relationship("Record", back_populates="user")
 
 
   @property
@@ -32,6 +32,7 @@ class User(db.Model, UserMixin):
   def to_dict(self):
     return {
       "id": self.id,
+      "full_name": self.full_name,
       "username": self.username,
       "email": self.email
     }

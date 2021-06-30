@@ -9,5 +9,5 @@ class Record(db.Model):
     title = db.Column(db.String(255), nullable = False)
     user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
 
-    user = db.relationship("User", back_populates="records", lazy='dynamic')
-    entries=db.relationship("Entry", back_populates="record", lazy='dynamic')
+    user = db.relationship("User", back_populates="records")
+    entries=db.relationship("Entry", back_populates="record")
