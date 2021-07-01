@@ -15,6 +15,19 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f"{field} : {error}")
     return errorMessages
 
+
+@entries_routes.route('/get-entries')
+def get_all_entries():
+    user=current_user.id
+    entries=Entry.query.filter(Entry.user_id == user).all()
+    return {"entries":[entry.to_dict() for entry in entries]}
+
+@entries_routes.route('/<int:id>')
+def get_one_entry(id):
+    entry=Entry.query.filter_by(id=id).first()
+    print(entry, "THIS IS A SINGLE ENTRY")
+    return entry.to_dict()
+
 @entries_routes.route('/new', methods=['POST'])
 def new_entry():
     form = EntryForm()
@@ -33,3 +46,18 @@ def new_entry():
         db.session.commit()
         return new_entry.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@entries_routes.route('/edit-entry/<int:id>', methods=["PATCH"])
+def edit_entry(id):
+    form = EntryForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        entry_to_be_edited=Entry.query.filter_by(id=id).first()
+        
+
+@entries_routes.route('/<int:id>', methods=["DELETE"])
+def delete_entry(id):
+    entry_to_be_deleted=Entry.query.filter_by(id=id).first()
+    db.session.delete(entry_to_be_deleted)
+    db.session.commit()
+    return {'id of entry deleted': id}
