@@ -25,18 +25,14 @@ def get_all_entries():
 @entries_routes.route('/<int:id>')
 def get_one_entry(id):
     entry=Entry.query.filter_by(id=id).first()
-    print(entry, "THIS IS A SINGLE ENTRY")
     return entry.to_dict()
 
 @entries_routes.route('/new', methods=['POST'])
 def new_entry():
     form = EntryForm()
-    print("ASJKFHASHFKASHFKJASHKFJHAKSJFKJASHFKHASKFHKJ")
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user=current_user.id
-        print(user, "THIS IS THE USERRR")
-        print("ARE YOU HITTING THIS ROUTE")
         new_entry=Entry(
             title=form.data['title'],
             content=form.data['content'],
@@ -53,7 +49,18 @@ def edit_entry(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         entry_to_be_edited=Entry.query.filter_by(id=id).first()
-        
+        user=current_user.id
+        title=form.data['title']
+        content=form.data['content']
+
+        entry_to_be_edited.title=title
+        entry_to_be_edited.content=content
+        entry_to_be_edited.user_id=user
+
+        db.session.commit()
+        return entry_to_be_edited.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 @entries_routes.route('/<int:id>', methods=["DELETE"])
 def delete_entry(id):

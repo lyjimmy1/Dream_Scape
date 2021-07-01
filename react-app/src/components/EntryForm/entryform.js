@@ -1,9 +1,11 @@
 import React, { useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { makeEntry } from "../../store/entry";
 
 const EntryForm = ()=>{
     const dispatch=useDispatch()
+    const [errors, setErrors] = useState([])
+    const [entryErrors, setEntryErrors] = useState([])
     const [title, setTitle] = useState("")
     const [content, setContent]=useState("")
 
@@ -17,8 +19,8 @@ const EntryForm = ()=>{
 
     const submitEntry = async (e) =>{
         e.preventDefault();
-        payload = 
-        const data = await dispatch
+        const sendEntry = await dispatch(makeEntry({title, content}))
+
     }
 
     return(
@@ -36,7 +38,7 @@ const EntryForm = ()=>{
                 </div>
                 <div>
                     <label htmlFor="content">Content</label>
-                    <input
+                    <textarea
                         name="content"
                         type="text"
                         placeholder="Content"
@@ -44,7 +46,10 @@ const EntryForm = ()=>{
                         onChange={updateContent}
                     />
                 </div>
+                <button type='submit'>Create</button>
             </form>
         </>
     )
 }
+
+export default EntryForm
