@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import configureStore from './store';
+import {ChakraProvider} from "@chakra-ui/react"
 
 const store = configureStore();
 

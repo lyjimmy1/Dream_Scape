@@ -10,6 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import EntryForm from "./components/EntryForm/entryform";
 
+
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();
