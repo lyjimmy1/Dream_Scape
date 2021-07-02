@@ -2,6 +2,8 @@
 
 const ADD_ENTRY = "entry/ADD_ENTRY"
 
+const GET_ENTRIES = "entry/GET_ENTRIES"
+
 //action creators
 
 const addEntry = (payload) =>({
@@ -9,7 +11,22 @@ const addEntry = (payload) =>({
     payload
 })
 
+const getEntries = (payload) => ({
+    type: GET_ENTRIES,
+    payload
+})
+
 //thunks
+
+export const obtainEntries = () =>async(dispatch) =>{
+    const response = await fetch('/api/entry/get-entries')
+    const data = await response.json()
+    if (data.errors){
+        return data;
+    }
+    dispatch(getEntries(data))
+    return{}
+}
 
 export const makeEntry = (payload) => async(dispatch) =>{
     const {title, content} = payload
@@ -26,7 +43,6 @@ export const makeEntry = (payload) => async(dispatch) =>{
     })
 
     const data=await response.json();
-    console.log(data, "THIS IS THE DATA")
     if(data.errors){
         return data
     }
@@ -36,7 +52,7 @@ export const makeEntry = (payload) => async(dispatch) =>{
 
 //reducer
 
-const initialState = {entries: null}
+const initialState = {entries: {}}
 
 export default function reducer(state = initialState, action) {
     let newState;
@@ -44,6 +60,12 @@ export default function reducer(state = initialState, action) {
         case ADD_ENTRY:
             newState = {...state}
             newState.entries = action.payload
+            return newState;
+        case GET_ENTRIES:
+            newState={...state}
+            action.payload.entries.forEach((entry) => {
+                newState.entries[entry.id] = entry
+            })
             return newState
         default:
             return state;
