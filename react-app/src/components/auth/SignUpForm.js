@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import {Flex, Heading, Input, Button} from "@chakra-ui/react"
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -45,55 +46,68 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        <label>Full Name</label>
-        <input
-          type="text"
-          name="full_name"
-          onChange={updateName}
-          value={full_name}
-        ></input>
-      </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    <>
+      <Flex height="100vh" align="center" justify="center">
+        <Flex direction="column" background="gray.100" p={12} rounded={12} >
+          <Heading>Sign Up</Heading>
+          <form onSubmit={onSignUp}>
+            <div>
+              <Input
+                type="text"
+                name="full_name"
+                placeholder="Full Name"
+                mt={3}
+                mb={3}
+                onChange={updateName}
+                value={full_name}
+              />
+            </div>
+            <div>
+              <Input
+                type="text"
+                name="username"
+                placeholder="Username"
+                mb={3}
+                onChange={updateUsername}
+                value={username}
+              />
+            </div>
+            <div>
+              <Input
+                type="text"
+                name="email"
+                placeholder="Email"
+                mb={3}
+                onChange={updateEmail}
+                value={email}
+              />
+            </div>
+            <div>
+              <Input
+                type="password"
+                name="password"
+                placeholder="Password"
+                mb={3}
+                onChange={updatePassword}
+                value={password}
+              />
+            </div>
+            <div>
+              <Input
+                type="password"
+                name="repeat_password"
+                placeholder="Repeat Password"
+                mb={6}
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                required={true}
+              />
+            </div>
+            <Button colorScheme="purple"type="submit">Sign Up</Button>
+          </form>
+        </Flex>
+      </Flex>
+    </>
   );
 };
 

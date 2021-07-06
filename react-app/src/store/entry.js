@@ -59,7 +59,7 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ADD_ENTRY:
             newState = {...state}
-            newState.entries = action.payload
+            newState.entries[action.payload.id] = action.payload
             return newState;
         case GET_ENTRIES:
             newState={...state}
