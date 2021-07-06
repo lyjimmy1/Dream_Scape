@@ -10,6 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import EntryForm from "./components/EntryForm/entryform";
 import AllEntries from "./components/Entries/Entries"
+import SideBar from "./components/SideBar/sidebar"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -34,9 +35,9 @@ function App() {
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path="/entry-form" exact={true}>
+        <ProtectedRoute path="/entry-form" exact={true}>
           <EntryForm />
-        </Route>
+        </ProtectedRoute>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
@@ -49,6 +50,7 @@ function App() {
         <Route path="/" exact={true} >
           <h1>My Home Page</h1>
           <AllEntries />
+          <SideBar />
         </Route>
       </Switch>
     </BrowserRouter>
