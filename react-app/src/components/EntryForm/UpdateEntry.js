@@ -23,6 +23,12 @@ const UpdateEntry =()=>{
         setContent(value)
     }
 
+    const cancelForm= (e) =>{
+        e.preventDefault()
+
+        history.push("/home")
+    }
+
     const submitEntry = async (e) =>{
         e.preventDefault();
         const payload = {id, title, content}
@@ -60,7 +66,10 @@ const UpdateEntry =()=>{
                                 mb={6}
                             />
                         </div>
-                        <Button mt={3} type='submit'>Accept Changes</Button>
+                        <Flex justify="space-between">
+                            <Button mt={3} onClick={cancelForm} type='submit'>Cancel</Button>
+                            <Button mt={3} type='submit'>Accept Changes</Button>
+                        </Flex>
                     </form>
                 </Flex>
             </Flex>
