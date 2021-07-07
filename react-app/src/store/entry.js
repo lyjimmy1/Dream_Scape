@@ -4,6 +4,8 @@ const ADD_ENTRY = "entry/ADD_ENTRY"
 
 const GET_ENTRIES = "entry/GET_ENTRIES"
 
+const EDIT_ENTRY = "entry/EDIT_ENTRY"
+
 //action creators
 
 const addEntry = (payload) =>({
@@ -13,6 +15,11 @@ const addEntry = (payload) =>({
 
 const getEntries = (payload) => ({
     type: GET_ENTRIES,
+    payload
+})
+
+const editEntry = (payload) => ({
+    type: EDIT_ENTRY,
     payload
 })
 
@@ -50,6 +57,26 @@ export const makeEntry = (payload) => async(dispatch) =>{
     dispatch(addEntry(data))
 }
 
+export const updateEntry =(payload)=>async (dispatch) => {
+    console.log("HELLLLOOOOOO AM I BEING HIT?")
+    const response = await fetch (`/api/entry/edit-entry/${payload.id}`,{
+        method: "PATCH",
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+
+    const data=await response.json()
+    if(data.errors){
+        return data
+    }
+    console.log(data, "THIS IS MY DATA")
+    dispatch(editEntry(data))
+
+
+}
+
 //reducer
 
 const initialState = {entries: {}}
@@ -66,6 +93,10 @@ export default function reducer(state = initialState, action) {
             action.payload.entries.forEach((entry) => {
                 newState.entries[entry.id] = entry
             })
+            return newState
+        case EDIT_ENTRY:
+            newState={...state}
+            newState.entries[action.payload.id] = action.payload
             return newState
         default:
             return state;

@@ -11,7 +11,7 @@ const NavBar = () => {
   if(sessionUser){
     sessionLinks=(
       <>
-      <Flex justify="space-between" bg="tomato" h="100px" w="100%" color="white" p={6}>
+      <Flex justify="space-between" bg="purple.200" h="100px" w="100%" color="white" p={6}>
         <NavLink to="/users" exact={true} activeClassName="active">
           Users
         </NavLink>

@@ -13,6 +13,7 @@ import AllEntries from "./components/Entries/Entries"
 import SideBar from "./components/SideBar/sidebar"
 import SplashPage from "./components/SplashPage/splashpage"
 import {ChakraProvider} from "@chakra-ui/react"
+import UpdateEntry from "./components/EntryForm/UpdateEntry"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -41,6 +42,9 @@ function App() {
           <ProtectedRoute path="/entry-form" exact={true}>
             <EntryForm />
           </ProtectedRoute>
+          <ProtectedRoute path="/entry-form/:id" exact={true}>
+            <UpdateEntry />
+          </ProtectedRoute>
           <Route path="/sign-up" exact={true}>
             <SignUpForm />
           </Route>
@@ -52,9 +56,11 @@ function App() {
           </ProtectedRoute>
           <Route path="/" exact={true} >
             <SplashPage />
-            {/* <AllEntries />
-            <SideBar /> */}
           </Route>
+          <ProtectedRoute path="/home" exact ={true}>
+            <AllEntries />
+            <SideBar />
+          </ProtectedRoute>
         </Switch>
       </BrowserRouter>
     </ChakraProvider>
