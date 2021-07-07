@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import {Flex, Spacer, Square, Center, Box} from "@chakra-ui/react"
+import {Flex} from "@chakra-ui/react"
 
 const SideBar = () =>{
 

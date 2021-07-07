@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {obtainEntries} from '../../store/entry'
 import { NavLink } from 'react-router-dom'
+import {Box, HStack} from '@chakra-ui/react'
+
 
 const AllEntries =()=>{
     const dispatch = useDispatch()
@@ -12,10 +14,13 @@ const AllEntries =()=>{
     }, [dispatch])
 
     return(
-        <div>
+        <HStack>
             {entries.map(entry=>
-            <NavLink to={`/entry-form/${entry.id}`} >{entry.title}</NavLink>)}
-        </div>
+            <Box w="100px" h="100px" borderRadius="md" bg="teal.100" >
+                <NavLink to={`/entry-form/${entry.id}`}>{entry.title}</NavLink>
+            </Box>)}
+        </HStack>
+
     )
 }
 

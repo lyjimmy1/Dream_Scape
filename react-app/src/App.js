@@ -14,6 +14,7 @@ import SideBar from "./components/SideBar/sidebar"
 import SplashPage from "./components/SplashPage/splashpage"
 import {ChakraProvider} from "@chakra-ui/react"
 import UpdateEntry from "./components/EntryForm/UpdateEntry"
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -58,8 +59,8 @@ function App() {
             <SplashPage />
           </Route>
           <ProtectedRoute path="/home" exact ={true}>
-            <AllEntries />
-            <SideBar />
+            <HomePage />
+            {/* <SideBar /> */}
           </ProtectedRoute>
         </Switch>
       </BrowserRouter>
