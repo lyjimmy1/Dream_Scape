@@ -34,7 +34,7 @@ const LoginForm = () => {
   return (
     <>
     <Flex height="100vh" align="center" justify="center">
-      <Flex direction="column" background="gray.100" p={12} rounded={12}>
+      <Flex direction="column" background="purple.100" p={12} rounded={12}>
       <Heading>Log In</Heading>
       <form onSubmit={onLogin}>
         <div>
@@ -51,6 +51,7 @@ const LoginForm = () => {
             mb={3}
             value={email}
             onChange={updateEmail}
+            background="white.100"
           />
         </div>
         <div>
@@ -61,6 +62,7 @@ const LoginForm = () => {
             mb={6}
             value={password}
             onChange={updatePassword}
+            background="white.100"
           />
           <Button colorScheme="purple" type="submit">Login</Button>
         </div>

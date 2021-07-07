@@ -48,7 +48,7 @@ const SignUpForm = () => {
   return (
     <>
       <Flex height="100vh" align="center" justify="center">
-        <Flex direction="column" background="gray.100" p={12} rounded={12} >
+        <Flex direction="column" background="purple.100" p={12} rounded={12} >
           <Heading>Sign Up</Heading>
           <form onSubmit={onSignUp}>
             <div>
@@ -60,6 +60,7 @@ const SignUpForm = () => {
                 mb={3}
                 onChange={updateName}
                 value={full_name}
+                background="white.100"
               />
             </div>
             <div>
@@ -70,6 +71,7 @@ const SignUpForm = () => {
                 mb={3}
                 onChange={updateUsername}
                 value={username}
+                background="white.100"
               />
             </div>
             <div>
@@ -80,6 +82,7 @@ const SignUpForm = () => {
                 mb={3}
                 onChange={updateEmail}
                 value={email}
+                background="white.100"
               />
             </div>
             <div>
@@ -90,6 +93,7 @@ const SignUpForm = () => {
                 mb={3}
                 onChange={updatePassword}
                 value={password}
+                background="white.100"
               />
             </div>
             <div>
@@ -101,6 +105,7 @@ const SignUpForm = () => {
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
                 required={true}
+                background="white.100"
               />
             </div>
             <Button colorScheme="purple"type="submit">Sign Up</Button>
