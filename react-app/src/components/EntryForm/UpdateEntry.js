@@ -12,9 +12,8 @@ const UpdateEntry =()=>{
     const{id} = useParams()
     const history=useHistory()
     const entries = useSelector(state => state.entry.entries[id])
-    console.log(entries, "THESE ARE MY OLD ENTRIES")
-    const [title, setTitle] = useState(entries.title)
-    const [content, setContent]=useState(entries.content)
+    const [title, setTitle] = useState(entries?.title)
+    const [content, setContent]=useState(entries?.content)
 
     const updateTitle = (e) =>{
         setTitle(e.target.value)
@@ -34,12 +33,7 @@ const UpdateEntry =()=>{
         e.preventDefault();
         const payload = {id, title, content}
         const sendEntry = await dispatch(updateEntry(payload))
-
-
         history.push("/home")
-
-
-
     }
     return(
         <>
@@ -48,33 +42,33 @@ const UpdateEntry =()=>{
                     <Flex justify="flex-end">
                         <DeleteEntryIcon />
                     </Flex>
-                    <form onSubmit={submitEntry}>
-                        <div>
-                            <label htmlFor="title">Title</label>
-                            <Input
-                                name="title"
-                                type="text"
-                                placeholder="Title"
-                                value={title}
-                                onChange={updateTitle}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="content">Content</label>
-                            <ReactQuill
-                                name="content"
-                                type="text"
-                                placeholder="Content"
-                                value={content}
-                                onChange={updateContent}
-                                mb={6}
-                            />
-                        </div>
-                        <Flex justify="space-between">
-                            <Button mt={3} onClick={cancelForm} type='submit'>Cancel</Button>
-                            <Button mt={3} type='submit'>Accept Changes</Button>
-                        </Flex>
-                    </form>
+                        <form onSubmit={submitEntry}>
+                            <div>
+                                <label htmlFor="title">Title</label>
+                                <Input
+                                    name="title"
+                                    type="text"
+                                    placeholder="Title"
+                                    value={title}
+                                    onChange={updateTitle}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="content">Content</label>
+                                <ReactQuill
+                                    name="content"
+                                    type="text"
+                                    placeholder="Content"
+                                    value={content}
+                                    onChange={updateContent}
+                                    mb={6}
+                                />
+                            </div>
+                            <Flex justify="space-between">
+                                <Button mt={3} onClick={cancelForm} type='submit'>Cancel</Button>
+                                <Button mt={3} type='submit'>Accept Changes</Button>
+                            </Flex>
+                        </form>
                 </Flex>
             </Flex>
         </>

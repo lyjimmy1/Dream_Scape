@@ -18,7 +18,7 @@ const AllEntries =()=>{
     return(
         <HStack className="scroll-bar">
             {entries.map(entry=>
-            <LinkBox w="100px" h="100px" borderRadius="md" bg="teal.100" >
+            <LinkBox w="100px" h="100px" borderRadius="md" bg="teal.100" key={entry.id}>
                 <LinkOverlay as={ReactLink} to={`/entry-form/${entry.id}`}>{entry.title}</LinkOverlay>
             </LinkBox>)}
         </HStack>

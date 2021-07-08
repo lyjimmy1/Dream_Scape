@@ -9,20 +9,25 @@ import {Menu,
     MenuCommand,
     MenuDivider} from '@chakra-ui/react'
 import {DeleteIcon} from '@chakra-ui/icons'
-import React from 'react'
-import {useDispatch} from 'react-redux'
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom';
-import {deleteEntry} from '../../store/entry'
+import {deleteEntry, obtainEntries} from '../../store/entry'
 
 
 
 const DeleteEntryIcon=()=>{
+    // let [currentState, setCurrentState] = useState("")
+
+    const currentState = useSelector(state => state.entry.entries)
+    console.log(currentState, "THIS IS THE CURRENT STATE RN")
 
     const dispatch=useDispatch()
     const {id} = useParams()
     const history = useHistory()
 
     const deleteSubmit = async(e)=>{
+        e.preventDefault();
         const payload = {id}
         const deletedEntry = await dispatch(deleteEntry(payload))
         history.push('/home')
