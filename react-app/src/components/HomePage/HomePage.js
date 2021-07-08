@@ -7,9 +7,8 @@ const HomePage =()=>{
 
     return(
         <>
-            <Stack spacing='24px'>
-                <AllEntries />
-            </Stack>
+            <AllEntries />
+
 
             <SideBar />
         </>
