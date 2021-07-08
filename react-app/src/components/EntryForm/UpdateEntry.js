@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react'
 import { useSelector, useDispatch} from 'react-redux';
 import {updateEntry} from "../../store/entry"
 import {useParams, useHistory, Redirect} from 'react-router-dom'
+import LittleDeleteIcon from '../DeleteIcon/DeleteIcon';
 
 const UpdateEntry =()=>{
     const dispatch = useDispatch()
@@ -44,6 +45,9 @@ const UpdateEntry =()=>{
         <>
             <Flex align="center" justify="center">
                 <Flex direction="column" background="gray.100" p={12} rounded={12}>
+                    <Flex justify="flex-end">
+                        <LittleDeleteIcon />
+                    </Flex>
                     <form onSubmit={submitEntry}>
                         <div>
                             <label htmlFor="title">Title</label>
