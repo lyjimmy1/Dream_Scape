@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { makeEntry } from "../../store/entry";
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
@@ -8,6 +9,7 @@ import {Heading, extendTheme, Flex, Input, Button, Textarea} from "@chakra-ui/re
 
 const EntryForm = ()=>{
     const dispatch=useDispatch()
+    const history=useHistory()
     const [errors, setErrors] = useState([])
     const [entryErrors, setEntryErrors] = useState([])
     const [title, setTitle] = useState("")
@@ -25,6 +27,7 @@ const EntryForm = ()=>{
         e.preventDefault();
         const sendEntry = await dispatch(makeEntry({title, content}))
 
+        history.push("/home")
     }
 
     return(

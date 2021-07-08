@@ -1,0 +1,4 @@
+.scroll-bar{
+    overflow: auto;
+    white-space: nowrap;
+}

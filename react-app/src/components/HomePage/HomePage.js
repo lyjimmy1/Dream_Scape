@@ -7,7 +7,7 @@ const HomePage =()=>{
 
     return(
         <>
-            <AllEntries />
+            <AllEntries/>
 
 
             <SideBar />
