@@ -6,6 +6,8 @@ const GET_ENTRIES = "entry/GET_ENTRIES"
 
 const EDIT_ENTRY = "entry/EDIT_ENTRY"
 
+const REMOVE_ENTRY = "entry/REMOVE_ENTRY"
+
 //action creators
 
 const addEntry = (payload) =>({
@@ -20,6 +22,11 @@ const getEntries = (payload) => ({
 
 const editEntry = (payload) => ({
     type: EDIT_ENTRY,
+    payload
+})
+
+const removeEntry= (payload) => ({
+    type: REMOVE_ENTRY,
     payload
 })
 
@@ -58,7 +65,6 @@ export const makeEntry = (payload) => async(dispatch) =>{
 }
 
 export const updateEntry =(payload)=>async (dispatch) => {
-    console.log("HELLLLOOOOOO AM I BEING HIT?")
     const response = await fetch (`/api/entry/edit-entry/${payload.id}`,{
         method: "PATCH",
         headers:{
@@ -71,10 +77,23 @@ export const updateEntry =(payload)=>async (dispatch) => {
     if(data.errors){
         return data
     }
-    console.log(data, "THIS IS MY DATA")
     dispatch(editEntry(data))
+}
 
-
+export const deleteEntry =(payload) =>async(dispatch)=>{
+    const response = await fetch(`/api/entry/${payload.id}`,{
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    if(data.errors){
+        return data
+    }
+    console.log(data, "THIS IS MY DATAAAAAAAAA")
+    dispatch(removeEntry(data))
 }
 
 //reducer
@@ -97,6 +116,10 @@ export default function reducer(state = initialState, action) {
         case EDIT_ENTRY:
             newState={...state}
             newState.entries[action.payload.id] = action.payload
+            return newState
+        case REMOVE_ENTRY:
+            newState={...state}
+            delete newState.entries[action.payload.id]
             return newState
         default:
             return state;

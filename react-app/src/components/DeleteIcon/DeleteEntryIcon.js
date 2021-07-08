@@ -9,9 +9,26 @@ import {Menu,
     MenuCommand,
     MenuDivider} from '@chakra-ui/react'
 import {DeleteIcon} from '@chakra-ui/icons'
-import React from 'react';
+import React from 'react'
+import {useDispatch} from 'react-redux'
+import { useParams, useHistory } from 'react-router-dom';
+import {deleteEntry} from '../../store/entry'
 
-const LittleDeleteIcon=()=>{
+
+
+const DeleteEntryIcon=()=>{
+
+    const dispatch=useDispatch()
+    const {id} = useParams()
+    const history = useHistory()
+
+    const deleteSubmit = async(e)=>{
+        const payload = {id}
+        const deletedEntry = await dispatch(deleteEntry(payload))
+        history.push('/home')
+    }
+
+
     return(
         <Menu>
             <MenuButton
@@ -20,7 +37,7 @@ const LittleDeleteIcon=()=>{
                 icon={DeleteIcon}
                 variant="outline"/>
             <MenuList>
-                <MenuItem >
+                <MenuItem onClick={deleteSubmit}>
                     Delete Entry
                 </MenuItem>
             </MenuList>
@@ -29,4 +46,4 @@ const LittleDeleteIcon=()=>{
     )
 }
 
-export default LittleDeleteIcon
+export default DeleteEntryIcon
