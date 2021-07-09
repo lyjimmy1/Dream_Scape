@@ -41,7 +41,7 @@ const SideBar = () =>{
             <Flex align="center" ml={3}>
                 <Avatar size="sm"/>
                 <Flex direction="column" ml={3}>
-                    <Heading size="sm" direction="column" ml={3}>Welcome!</Heading>
+                    <Heading size="sm" direction="column" ml={2}>Welcome!</Heading>
                     <Text ml={3}>{user.full_name}</Text>
                 </Flex>
             </Flex>
