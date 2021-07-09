@@ -1,7 +1,7 @@
 import AllEntries from "../Entries/Entries";
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {HStack, Stack} from "@chakra-ui/react"
+import {HStack, Stack, Flex} from "@chakra-ui/react"
 import SideBar from "../SideBar/sidebar";
 import {obtainEntries} from "../../store/entry"
 
@@ -16,10 +16,11 @@ const HomePage =()=>{
     }, [dispatch, currentState])
 
     return(
-        <>
-            <AllEntries/>
+        <Flex direction="row" justify="space around">
             <SideBar />
-        </>
+            <AllEntries/>
+        </Flex>
+
     )
 }
 

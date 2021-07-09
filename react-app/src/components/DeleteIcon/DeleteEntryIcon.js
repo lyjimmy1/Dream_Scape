@@ -9,10 +9,10 @@ import {Menu,
     MenuCommand,
     MenuDivider} from '@chakra-ui/react'
 import {DeleteIcon} from '@chakra-ui/icons'
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom';
-import {deleteEntry, obtainEntries} from '../../store/entry'
+import {deleteEntry} from '../../store/entry'
 
 
 
