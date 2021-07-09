@@ -6,6 +6,8 @@ import { useSelector, useDispatch} from 'react-redux';
 import {updateEntry} from "../../store/entry"
 import {useParams, useHistory, Redirect} from 'react-router-dom'
 import DeleteEntryIcon from '../DeleteIcon/DeleteEntryIcon'
+import SideBar from "../SideBar/sidebar"
+import './entryform.css'
 
 const UpdateEntry =()=>{
     const dispatch = useDispatch()
@@ -36,9 +38,9 @@ const UpdateEntry =()=>{
         history.push("/home")
     }
     return(
-        <>
-            <Flex align="center" justify="center">
-                <Flex direction="column" background="gray.100" p={12} rounded={12}>
+        <Flex>
+            <SideBar/>
+                <Flex width="100%" mt='2.5vh' direction="column" background="gray.100" p={12} rounded={12}>
                     <Flex justify="flex-end">
                         <DeleteEntryIcon />
                     </Flex>
@@ -70,8 +72,7 @@ const UpdateEntry =()=>{
                             </Flex>
                         </form>
                 </Flex>
-            </Flex>
-        </>
+        </Flex>
     )
 }
 
