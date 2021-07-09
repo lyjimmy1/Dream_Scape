@@ -8,11 +8,9 @@ import {obtainEntries} from "../../store/entry"
 const HomePage =()=>{
     const dispatch = useDispatch()
     const currentState = useSelector(state => state.entry.entries)
-    console.log(currentState, "AFTER DELETION")
 
     useEffect(async()=>{
         await dispatch(obtainEntries())
-        console.log("IS THIS RUNNING")
     }, [dispatch, currentState])
 
     return(

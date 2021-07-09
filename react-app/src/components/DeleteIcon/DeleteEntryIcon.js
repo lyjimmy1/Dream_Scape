@@ -20,7 +20,6 @@ const DeleteEntryIcon=()=>{
     // let [currentState, setCurrentState] = useState("")
 
     const currentState = useSelector(state => state.entry.entries)
-    console.log(currentState, "THIS IS THE CURRENT STATE RN")
 
     const dispatch=useDispatch()
     const {id} = useParams()

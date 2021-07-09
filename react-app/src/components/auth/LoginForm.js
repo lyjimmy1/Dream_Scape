@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
-import {Heading, extendTheme, Flex, Input, Button} from "@chakra-ui/react"
+import {Heading, Flex, Input, Button} from "@chakra-ui/react"
 
 const LoginForm = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { makeEntry } from "../../store/entry";
@@ -11,8 +11,6 @@ import './entryform.css'
 const EntryForm = ()=>{
     const dispatch=useDispatch()
     const history=useHistory()
-    const [errors, setErrors] = useState([])
-    const [entryErrors, setEntryErrors] = useState([])
     const [title, setTitle] = useState("")
     const [content, setContent]=useState("")
 

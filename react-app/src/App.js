@@ -9,8 +9,6 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 import EntryForm from "./components/EntryForm/entryform";
-import AllEntries from "./components/Entries/Entries"
-import SideBar from "./components/SideBar/sidebar"
 import SplashPage from "./components/SplashPage/splashpage"
 import {ChakraProvider} from "@chakra-ui/react"
 import UpdateEntry from "./components/EntryForm/UpdateEntry"
