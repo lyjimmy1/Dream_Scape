@@ -16,7 +16,7 @@ const HomePage =()=>{
     }, [dispatch, currentState])
 
     return(
-        <Flex direction="row" justify="space around">
+        <Flex>
             <SideBar />
             <AllEntries/>
         </Flex>
