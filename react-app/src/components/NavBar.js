@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink, useHistory} from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
-import {Flex, Button, Image, Spacer, Text} from "@chakra-ui/react"
+import {Flex, Button, Image, Spacer, Text, Heading} from "@chakra-ui/react"
 import { useSelector, useDispatch } from 'react-redux';
 import {demoUser} from '../../src/store/session'
 import cuteMoon from '../components/images/cute_moon.png'
@@ -30,16 +29,19 @@ const NavBar = () => {
 
       <Flex bg="purple.200" h="100px" w="100%" color="white" p={6}>
         <Image  justify="flex-start" align="center" src={cuteMoon} height='80px' mb={3}/>
-        <Text align="center" color="purple">DREAM SCAPE</Text>
+        <Heading mt={5} align="center" color="purple" fontSize="lg">DREAM SCAPE</Heading>
         <Spacer />
-        <Flex justify="flex-end">
-          <a href="https://github.com/lyjimmy1"  exact={true} activeClassName="active">
-            Github
-          </a>
-
-          <a href="https://linkedin.com/in/jimmy-ly-22b925134">
-            LinkedIn
-          </a>
+        <Flex justify="flex-end" >
+          <Flex mr={3} >
+            <a href="https://github.com/lyjimmy1"  exact={true} activeClassName="active">
+              Github
+            </a>
+          </Flex>
+          <Flex>
+            <a href="https://linkedin.com/in/jimmy-ly-22b925134">
+              LinkedIn
+            </a>
+          </Flex>
         </Flex>
       </Flex>
     </>
