@@ -33,11 +33,11 @@ const SideBar = () =>{
         w="200px"
         borderRadius='md'
         direction="column"
-        justifyContent="space-between"
+        justifyContent="flex-start"
         background="purple.100"
         boxShadow='md'>
 
-            <Flex align="center" ml={3}>
+            <Flex align="center" ml={3} mb={3} mt={3}>
                 <Avatar size="sm"/>
                 <Flex direction="column" ml={3}>
                     <Heading size="sm" direction="column" ml={2}>Welcome!</Heading>
@@ -47,7 +47,7 @@ const SideBar = () =>{
 
             <Divider  orientation="horizontal" colorScheme="purple"/>
 
-            <Flex align="center">
+            <Flex align="center" mt={3} mb={3}>
                 <IconButton
                 ml={3}
                 borderRadius='md'
@@ -61,7 +61,7 @@ const SideBar = () =>{
                 </Flex>
             </Flex>
 
-            <Flex align="center">
+            <Flex align="center" mt={3} mb={3}>
                 <IconButton
                 ml={3}
                 borderRadius='50'
@@ -75,7 +75,7 @@ const SideBar = () =>{
                 </Flex>
             </Flex>
 
-            <Flex align="center">
+            {/* <Flex align="center">
                 <LinkOverlay href="https://github.com/lyjimmy1">
                     <IconButton
                     ml={3}
@@ -88,9 +88,9 @@ const SideBar = () =>{
                 <Flex direction="column" ml={3}>
                         <Text>Github</Text>
                 </Flex>
-            </Flex>
+            </Flex> */}
 
-            <Flex align="center">
+            <Flex align="flex-end" mt={3} mb={3}>
                 <IconButton
                 ml={3}
                 borderRadius='md'
