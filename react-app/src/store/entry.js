@@ -90,10 +90,9 @@ export const deleteEntry =(payload) =>async(dispatch)=>{
     });
     const data = await response.json();
     if(data.errors){
-        console.log("HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY", data)
         return data
     }
-    console.log(data, "THIS IS MY DATAAAAAAAAA")
+
     dispatch(removeEntry(data))
 }
 
@@ -119,7 +118,6 @@ export default function reducer(state = initialState, action) {
             newState.entries[action.payload.id] = action.payload
             return newState
         case REMOVE_ENTRY:
-            console.log(action.payload, 'YOOOOOOOOOOOOOOOOOOOOOOO')
             newState={...state}
             delete newState.entries[action.payload['id of entry deleted']]
             return newState

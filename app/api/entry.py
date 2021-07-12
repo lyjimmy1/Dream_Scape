@@ -1,5 +1,5 @@
-from flask import Blueprint, session, request
-from flask_login import login_required, current_user
+from flask import Blueprint, request
+from flask_login import current_user
 from app.models import Entry, db
 from app.forms import EntryForm
 
