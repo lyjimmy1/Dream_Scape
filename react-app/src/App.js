@@ -13,6 +13,7 @@ import SplashPage from "./components/SplashPage/splashpage"
 import {ChakraProvider} from "@chakra-ui/react"
 import UpdateEntry from "./components/EntryForm/UpdateEntry"
 import HomePage from "./components/HomePage/HomePage";
+import RecordForm from "./components/RecordForm/recordform"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <ProtectedRoute path="/entry-form" exact={true}>
             <EntryForm />
+          </ProtectedRoute>
+          <ProtectedRoute path="/record-form" exact={true}>
+            <RecordForm />
           </ProtectedRoute>
           <ProtectedRoute path="/entry-form/:id" exact={true}>
             <UpdateEntry />
