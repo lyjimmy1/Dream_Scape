@@ -1,98 +1,21 @@
-# Flask React Project
+# Dream Scape
 
-This is the backend for the Flask React project.
+<em>By Jimmy Ly - [Don't Let Your Dreams Stay Dreams](https://dream-scape.herokuapp.com/)</em>
 
-## Getting started
+## What is Dream Scape?
 
-1. Clone this repository (only this branch)
+Dream Scape is a revolutionary full-stack web application that allows users to record and keep track of their dreams via entries. Equipped with a rich-text editor, each entry is personally customizable depending on the individual user. 
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+Users can create an entry for each dream encounter they have. Users can also update and delete an entry. Users are also able to personalize the contents of their entries through a rich text-editor API. 
 
-2. Install dependencies
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+## Technologies Used
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+Dream Scape is a full-stack web application. Backend technologies include Python, SQLAlchemy, and Flask. Frontend technologies include Javascript, React, and Redux. Chakra UI, an external React Component library, was used to style most of the components in this project. React Quill, a rich-text editor API, was integrated to help make entries more customizable.
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+## Conclusion and Future Plans
 
-   ```bash
-   pipenv shell
-   ```
+Dream was a fun project that I enjoyed immensely. Driven by a real life event that took place, I was estatic that I was able to bring this idea to fruition. This project challenged my knowledge and limitations as a software developer. Through much stress and frustration, I learned a lot about myself, my abilities as a software developer, and my mental capacity as a life long learner. This project was indeed a journey in itself and I couldn't be more pleased with the results. 
 
-   ```bash
-   flask db upgrade
-   ```
+However, there is much more work to do before I can consider this project finished. I plan to implement a "Record" feature where users can store their dreame entries into a Record. Users can also make multiple Records to store different types of dream entries. I also plan to implement a search feature so that Users can search for certain entries they have made and a tagging system to better categorize entries. 
 
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
-
-   ```bash
-   heroku login
-   ```
-
-5. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit
