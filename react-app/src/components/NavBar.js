@@ -1,11 +1,25 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory} from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import {Flex, Spacer, Square, Center, Box} from "@chakra-ui/react"
-import { useSelector } from 'react-redux';
+import {Flex, Button} from "@chakra-ui/react"
+import { useSelector, useDispatch } from 'react-redux';
+import {demoUser} from '../../src/store/session'
+
 
 const NavBar = () => {
   const sessionUser = useSelector(state=> state.session.user)
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+
+  const submitDemo = async (e) =>{
+    e.preventDefault()
+    let sendDemo= await dispatch(demoUser())
+
+    history.push("/home")
+
+  }
+  
 
   let sessionLinks;
   if(sessionUser){
@@ -28,7 +42,7 @@ const NavBar = () => {
   } else{
     sessionLinks=(
       <>
-      <Flex justify="space-between" bg="tomato" h="100px" w="100%" color="white" p={6}>
+      <Flex justify="space-between" bg="purple.200" h="100px" w="100%" color="white" p={6}>
         <NavLink to="/" exact={true} activeClassName="active">
           Home
         </NavLink>
@@ -38,6 +52,7 @@ const NavBar = () => {
         <NavLink to="/sign-up" exact={true} activeClassName="active">
           Sign Up
         </NavLink>
+        <Button colorScheme="purple.200" onClick={submitDemo}>Demo User</Button>
       </Flex>
     </>
     )

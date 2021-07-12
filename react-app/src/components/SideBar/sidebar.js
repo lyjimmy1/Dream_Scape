@@ -1,9 +1,8 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { NavLink, useHistory } from 'react-router-dom';
-import {Flex, Avatar, Heading, Text, IconButton, Divider} from "@chakra-ui/react"
+import { useHistory } from 'react-router-dom';
+import {Flex, Avatar, Heading, Text, IconButton, Divider, LinkOverlay} from "@chakra-ui/react"
 import {MoonIcon, AddIcon, InfoOutlineIcon, CloseIcon} from '@chakra-ui/icons'
-import LogoutButton from '../auth/LogoutButton';
 import {logout} from "../../store/session"
 
 const SideBar = () =>{
@@ -29,7 +28,7 @@ const SideBar = () =>{
 
     return(
         <Flex pos="sticky"
-         h="95vh"
+         h="95vh" ml={2}
         marginTop="2.5vh"
         w="200px"
         borderRadius='md'
@@ -77,15 +76,17 @@ const SideBar = () =>{
             </Flex>
 
             <Flex align="center">
-                <IconButton
-                ml={3}
-                borderRadius='md'
-                colorScheme="purple"
-                aria-label="Redirects to About Me Page"
-                icon={<InfoOutlineIcon/>}
-                />
+                <LinkOverlay href="https://github.com/lyjimmy1">
+                    <IconButton
+                    ml={3}
+                    borderRadius='md'
+                    colorScheme="purple"
+                    aria-label="Redirects to About Me Page"
+                    icon={<InfoOutlineIcon/>}
+                    />
+                </LinkOverlay>
                 <Flex direction="column" ml={3}>
-                        <Text>About Me</Text>
+                        <Text>Github</Text>
                 </Flex>
             </Flex>
 

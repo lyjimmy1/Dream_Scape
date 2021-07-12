@@ -13,6 +13,19 @@ const removeUser = () => ({
 })
 
 // thunks
+export const demoUser = ()=> async (dispatch) => {
+    const response = await fetch('/api/auth/demo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const data = await response.json();
+    if(data.errors){
+        return;
+    }
+    dispatch(setUser(data))
+}
 
 export const authenticate = () => async (dispatch) => {
     const response = await fetch('/api/auth/', {

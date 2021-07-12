@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import {Heading, Flex, Input, Button} from "@chakra-ui/react"
+import { demoUser } from "../../store/session";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
