@@ -2,8 +2,7 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import {Flex, Avatar, Heading, Text, IconButton, Divider, useDisclosure, Spacer} from "@chakra-ui/react"
-import {GiSecretBook, GiBookshelf} from 'react-icons/gi'
-import {AiFillFileAdd} from 'react-icons/ai'
+import {GiSecretBook, GiBookshelf, GiStabbedNote} from 'react-icons/gi'
 import {RiMoonClearFill} from 'react-icons/ri'
 import {FiLogOut} from 'react-icons/fi'
 import {logout} from "../../store/session"
@@ -74,7 +73,7 @@ const SideBar = () =>{
 
             <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={makeEntry}>
                 <IconButton
-                as={AiFillFileAdd}
+                as={GiStabbedNote}
                 ml={3}
                 borderRadius='md'
                 colorScheme="purple"
