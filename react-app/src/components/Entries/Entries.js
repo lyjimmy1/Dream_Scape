@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {obtainEntries} from '../../store/entry'
-import { NavLink } from 'react-router-dom'
 import {Flex, LinkBox, LinkOverlay, Text, SimpleGrid, Spacer} from '@chakra-ui/react'
 import { NavLink as ReactLink} from 'react-router-dom';
 import './entries.css'

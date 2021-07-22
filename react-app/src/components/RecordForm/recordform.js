@@ -30,12 +30,12 @@ const RecordForm =()=>{
 
     return(
         <>
-            {/* <Text onClick={onOpen}>New Record</Text> */}
+            <Text onClick={onOpen}>New Record</Text>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Create a New Record</ModalHeader>
+                    <ModalHeader>Create a Record</ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
                         <form onSubmit={submitRecord}>

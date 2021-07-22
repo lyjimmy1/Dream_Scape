@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import {Flex, Avatar, Heading, Text, IconButton, Divider, useDisclosure} from "@chakra-ui/react"
-import {GiSecretBook} from 'react-icons/gi'
+import {Flex, Avatar, Heading, Text, IconButton, Divider, useDisclosure, Spacer} from "@chakra-ui/react"
+import {GiSecretBook, GiBookshelf} from 'react-icons/gi'
 import {AiFillFileAdd} from 'react-icons/ai'
 import {RiMoonClearFill} from 'react-icons/ri'
 import {FiLogOut} from 'react-icons/fi'
@@ -26,17 +26,16 @@ const SideBar = () =>{
         history.push('/home')
     }
 
+    const goRecords = async(e) =>{
+        e.preventDefault()
+        history.push('/records')
+    }
+
     const logOut = async(e)=>{
         e.preventDefault()
         await dispatch(logout());
     }
 
-    const popOut = async(e)=>{
-        e.preventDefault()
-        return(
-            <RecordForm />
-        )
-    }
 
     return(
         <Flex pos="sticky"
@@ -59,7 +58,7 @@ const SideBar = () =>{
 
             <Divider  orientation="horizontal" colorScheme="purple"/>
 
-            <Flex align="center" mt={3} mb={3}>
+            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={goHome}>
                 <IconButton
                 as={RiMoonClearFill}
                 ml={3}
@@ -73,7 +72,7 @@ const SideBar = () =>{
                 </Flex>
             </Flex>
 
-            <Flex align="center" mt={3} mb={3}>
+            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={makeEntry}>
                 <IconButton
                 as={AiFillFileAdd}
                 ml={3}
@@ -87,21 +86,35 @@ const SideBar = () =>{
                 </Flex>
             </Flex>
 
-            <Flex align="center" mt={3} mb={3}>
+            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}}>
                 <IconButton
                 as={GiSecretBook}
                 ml={3}
                 borderRadius='md'
                 colorScheme="purple"
                 aria-label="Creates a Record"
-                onClick={onOpen}
                 />
                 <Flex direction="column" ml={3}>
-                        <Text>New Record</Text>
+                        <RecordForm onClick={onOpen}/>
                 </Flex>
             </Flex>
 
-            <Flex align="flex-end" mt={3} mb={3}>
+            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={goRecords}>
+                <IconButton
+                as={GiBookshelf}
+                ml={3}
+                borderRadius='md'
+                colorScheme="purple"
+                aria-label="Redirects to Records page"
+                />
+                <Flex direction="column" ml={3}>
+                        <Text>View Records</Text>
+                </Flex>
+            </Flex>
+
+            <Spacer />
+
+            <Flex align="flex-end" mt={3} mb={10} _hover={{background: "purple.200"}} onClick={logOut}>
                 <IconButton
                 as={FiLogOut}
                 ml={3}
