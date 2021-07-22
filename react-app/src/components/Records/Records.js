@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {obtainRecords} from '../../store/record'
-import {Text} from '@chakra-ui/react'
+import {Text, Flex} from '@chakra-ui/react'
+import SideBar from '../SideBar/sidebar'
 
 const AllRecords = ()=>{
     const dispatch = useDispatch()
@@ -14,10 +15,11 @@ const AllRecords = ()=>{
 
 
     return(
-        <>
+        <Flex>
+            <SideBar />
             {records.map(record =>
             <Text>{record.title}</Text>)}
-        </>
+        </Flex>
     )
 }
 
