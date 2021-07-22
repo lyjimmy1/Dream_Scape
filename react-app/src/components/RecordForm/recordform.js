@@ -1,12 +1,22 @@
 import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { makeRecord} from '../../store/record'
-import {Flex, Input, Button} from "@chakra-ui/react"
+import {Input, Button, Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure, Text } from "@chakra-ui/react"
+
+
 
 
 const RecordForm =()=>{
     const dispatch = useDispatch()
     const [title, setTitle]=useState("")
+    const { isOpen, onOpen, onClose} = useDisclosure()
 
     const createTitle=(e)=>{
         setTitle(e.target.value)
@@ -20,18 +30,30 @@ const RecordForm =()=>{
 
     return(
         <>
-            <form onSubmit={submitRecord}>
-                <div>
-                    <Input
-                        name="title"
-                        type="text"
-                        placeholder="Title"
-                        value={title}
-                        onChange={createTitle}
-                    />
-                </div>
-                <Button type='submit'>Create</Button>
-            </form>
+            {/* <Text onClick={onOpen}>New Record</Text> */}
+
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Create a New Record</ModalHeader>
+                    <ModalCloseButton/>
+                    <ModalBody>
+                        <form onSubmit={submitRecord}>
+                            <div>
+                                <Input
+                                    name="title"
+                                    type="text"
+                                    placeholder="Title"
+                                    value={title}
+                                    onChange={createTitle}
+                                    mb={3}
+                                />
+                            </div>
+                            <Button onClick={onClose} type='submit'>Create</Button>
+                        </form>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </>
     )
 }

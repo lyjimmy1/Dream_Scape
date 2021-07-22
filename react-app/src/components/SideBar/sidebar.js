@@ -1,16 +1,20 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import {Flex, Avatar, Heading, Text, IconButton, Divider, LinkOverlay} from "@chakra-ui/react"
-import {MoonIcon, AddIcon, InfoOutlineIcon, CloseIcon} from '@chakra-ui/icons'
+import {Flex, Avatar, Heading, Text, IconButton, Divider, useDisclosure} from "@chakra-ui/react"
+import {GiSecretBook} from 'react-icons/gi'
+import {AiFillFileAdd} from 'react-icons/ai'
+import {RiMoonClearFill} from 'react-icons/ri'
+import {FiLogOut} from 'react-icons/fi'
 import {logout} from "../../store/session"
-import RecordModal from '../RecordForm/recordModal'
+import RecordForm from '../RecordForm/recordform'
 
 const SideBar = () =>{
 
     const user = useSelector(state => state.session.user)
     const history = useHistory()
     const dispatch= useDispatch()
+    const { isOpen, onOpen, onClose} = useDisclosure()
 
     const makeEntry= async (e) => {
         e.preventDefault()
@@ -25,6 +29,13 @@ const SideBar = () =>{
     const logOut = async(e)=>{
         e.preventDefault()
         await dispatch(logout());
+    }
+
+    const popOut = async(e)=>{
+        e.preventDefault()
+        return(
+            <RecordForm />
+        )
     }
 
     return(
@@ -50,11 +61,11 @@ const SideBar = () =>{
 
             <Flex align="center" mt={3} mb={3}>
                 <IconButton
+                as={RiMoonClearFill}
                 ml={3}
                 borderRadius='md'
                 colorScheme="purple"
                 aria-label="Redirects to Home"
-                icon={<MoonIcon/>}
                 onClick={goHome}
                 />
                 <Flex direction="column" ml={3}>
@@ -64,11 +75,11 @@ const SideBar = () =>{
 
             <Flex align="center" mt={3} mb={3}>
                 <IconButton
+                as={AiFillFileAdd}
                 ml={3}
-                borderRadius='50'
+                borderRadius='md'
                 colorScheme="purple"
                 aria-label="Creates an Entry"
-                icon={<AddIcon/>}
                 onClick={makeEntry}
                 />
                 <Flex direction="column" ml={3}>
@@ -78,39 +89,25 @@ const SideBar = () =>{
 
             <Flex align="center" mt={3} mb={3}>
                 <IconButton
+                as={GiSecretBook}
                 ml={3}
-                borderRadius='50'
+                borderRadius='md'
                 colorScheme="purple"
                 aria-label="Creates a Record"
-                icon={<AddIcon/>}
+                onClick={onOpen}
                 />
                 <Flex direction="column" ml={3}>
-                        <RecordModal />
+                        <Text>New Record</Text>
                 </Flex>
             </Flex>
 
-            {/* <Flex align="center">
-                <LinkOverlay href="https://github.com/lyjimmy1">
-                    <IconButton
-                    ml={3}
-                    borderRadius='md'
-                    colorScheme="purple"
-                    aria-label="Redirects to About Me Page"
-                    icon={<InfoOutlineIcon/>}
-                    />
-                </LinkOverlay>
-                <Flex direction="column" ml={3}>
-                        <Text>Github</Text>
-                </Flex>
-            </Flex> */}
-
             <Flex align="flex-end" mt={3} mb={3}>
                 <IconButton
+                as={FiLogOut}
                 ml={3}
                 borderRadius='md'
                 colorScheme="purple"
                 aria-label="Logs me out"
-                icon={<CloseIcon/>}
                 onClick={logOut}
                 />
                 <Flex direction="column" ml={3}>
