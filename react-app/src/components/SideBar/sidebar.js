@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import {Flex, Avatar, Heading, Text, IconButton, Divider, LinkOverlay} from "@chakra-ui/react"
 import {MoonIcon, AddIcon, InfoOutlineIcon, CloseIcon} from '@chakra-ui/icons'
 import {logout} from "../../store/session"
+import RecordModal from '../RecordForm/recordModal'
 
 const SideBar = () =>{
 
@@ -72,6 +73,19 @@ const SideBar = () =>{
                 />
                 <Flex direction="column" ml={3}>
                         <Text>New Dream Entry</Text>
+                </Flex>
+            </Flex>
+
+            <Flex align="center" mt={3} mb={3}>
+                <IconButton
+                ml={3}
+                borderRadius='50'
+                colorScheme="purple"
+                aria-label="Creates a Record"
+                icon={<AddIcon/>}
+                />
+                <Flex direction="column" ml={3}>
+                        <RecordModal />
                 </Flex>
             </Flex>
 

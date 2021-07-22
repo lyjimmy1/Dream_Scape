@@ -48,9 +48,9 @@ function App() {
           <ProtectedRoute path="/entry-form" exact={true}>
             <EntryForm />
           </ProtectedRoute>
-          <ProtectedRoute path="/record-form" exact={true}>
+          {/* <ProtectedRoute path="/record-form" exact={true}>
             <RecordForm />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
           <ProtectedRoute path="/entry-form/:id" exact={true}>
             <UpdateEntry />
           </ProtectedRoute>
