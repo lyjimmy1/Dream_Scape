@@ -55,6 +55,7 @@ def edit_entry(id):
         content=form.data['content']
         record=form.data['record_id']
 
+
         entry_to_be_edited.title=title
         entry_to_be_edited.content=content
         entry_to_be_edited.user_id=user

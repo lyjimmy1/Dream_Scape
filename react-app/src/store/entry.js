@@ -43,7 +43,7 @@ export const obtainEntries = () =>async(dispatch) =>{
 }
 
 export const makeEntry = (payload) => async(dispatch) =>{
-    const {title, content} = payload
+    const {title, content, record_id} = payload
 
     const response = await fetch ('/api/entry/new', {
         method: 'POST',
@@ -52,7 +52,9 @@ export const makeEntry = (payload) => async(dispatch) =>{
         },
         body: JSON.stringify({
             title,
-            content
+            content,
+            record_id
+
         })
     })
 
@@ -73,7 +75,9 @@ export const updateEntry =(payload)=>async (dispatch) => {
         body: JSON.stringify(payload)
     })
 
+
     const data=await response.json()
+    console.log(data, "THIS IS THE RECORD DATA")
     if(data.errors){
         return data
     }
