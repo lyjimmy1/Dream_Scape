@@ -4,7 +4,7 @@ const ADD_RECORD="record/ADD_RECORD"
 
 const GET_RECORDS ="record/GET_RECORDS"
 
-
+const EDIT_RECORD = "record/EDIT_RECORD"
 
 //action creators
 
@@ -15,6 +15,11 @@ const addRecord=(payload)=>({
 
 const getRecords = (payload)=>({
     type: GET_RECORDS,
+    payload
+})
+
+const editRecord = (payload) =>({
+    type: EDIT_RECORD,
     payload
 })
 
@@ -29,6 +34,26 @@ export const obtainRecords = () =>async(dispatch) =>{
     dispatch(getRecords(data))
 
     return{}
+}
+
+export const updateRecord = (payload) =>async (dispatch) =>{
+    const {props, title} = payload;
+
+    const response = await fetch(`/api/record/${payload.props.id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({title})
+    })
+
+    const data=await response.json()
+    console.log(data, "THIS IS MY UPDATED DATA!!!!!!!")
+    if(data.errors){
+        return data
+    }
+
+    dispatch(editRecord(data))
 }
 
 export const makeRecord = (payload) => async (dispatch)=>{
@@ -66,6 +91,10 @@ export default function reducer(state = initialState, action){
             action.payload.records.forEach((record)=>{
                 newState.records[record.id] = record
             })
+            return newState
+        case EDIT_RECORD:
+            newState={...state}
+            newState.records[action.payload.props.id] = action.payload
             return newState
         default:
             return state;

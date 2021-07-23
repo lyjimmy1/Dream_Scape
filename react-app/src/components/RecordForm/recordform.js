@@ -5,10 +5,9 @@ import {Input, Button, Modal,
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
-    useDisclosure, Text } from "@chakra-ui/react"
+    useDisclosure, Text,} from "@chakra-ui/react"
 
 
 
