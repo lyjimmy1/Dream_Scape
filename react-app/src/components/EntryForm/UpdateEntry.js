@@ -17,6 +17,7 @@ const UpdateEntry =()=>{
     const records = useSelector(state => Object.values(state.record.records))
     const [title, setTitle] = useState(entries?.title)
     const [content, setContent]=useState(entries?.content)
+    const [record_id, setRecordId]=useState(0)
 
 
 
@@ -36,7 +37,7 @@ const UpdateEntry =()=>{
 
     const submitEntry = async (e) =>{
         e.preventDefault();
-        const payload = {id, title, content}
+        const payload = {id, title, content, record_id}
         const sendEntry = await dispatch(updateEntry(payload))
         history.push("/home")
     }
@@ -47,7 +48,7 @@ const UpdateEntry =()=>{
                     <Flex justify="space-between">
                         <Select placeholder="Add To~" w="20vw">
                             {records.map(record =>
-                                <option onClick={submitEntry}>--{record.title}--</option>
+                                <option onClick={()=>setRecordId(record.id)}>--{record.title}--</option>
                             )}
                         </Select>
                         <DeleteEntryIcon />

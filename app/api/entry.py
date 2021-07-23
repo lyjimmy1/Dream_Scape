@@ -36,6 +36,7 @@ def new_entry():
         new_entry=Entry(
             title=form.data['title'],
             content=form.data['content'],
+            record_id=form.data['record_id'],
             user_id=user
         )
         db.session.add(new_entry)
@@ -52,10 +53,12 @@ def edit_entry(id):
         user=current_user.id
         title=form.data['title']
         content=form.data['content']
+        record=form.data['record_id']
 
         entry_to_be_edited.title=title
         entry_to_be_edited.content=content
         entry_to_be_edited.user_id=user
+        entry_to_be_edited.record_id=record
 
         db.session.commit()
         return entry_to_be_edited.to_dict()
