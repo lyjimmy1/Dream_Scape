@@ -1,10 +1,10 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import {Flex, Input, Button} from "@chakra-ui/react"
-import React, {useEffect, useState} from 'react'
+import {Flex, Input, Button, Select} from "@chakra-ui/react"
+import React, {useState} from 'react'
 import { useSelector, useDispatch} from 'react-redux';
 import {updateEntry} from "../../store/entry"
-import {useParams, useHistory, Redirect} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import DeleteEntryIcon from '../DeleteIcon/DeleteEntryIcon'
 import SideBar from "../SideBar/sidebar"
 import './entryform.css'
@@ -14,8 +14,11 @@ const UpdateEntry =()=>{
     const{id} = useParams()
     const history=useHistory()
     const entries = useSelector(state => state.entry.entries[id])
+    const records = useSelector(state => Object.values(state.record.records))
     const [title, setTitle] = useState(entries?.title)
     const [content, setContent]=useState(entries?.content)
+
+
 
     const updateTitle = (e) =>{
         setTitle(e.target.value)
@@ -41,7 +44,12 @@ const UpdateEntry =()=>{
         <Flex>
             <SideBar/>
                 <Flex width="100%" mt='2.5vh' direction="column" background="gray.100" p={12} rounded={12}>
-                    <Flex justify="flex-end">
+                    <Flex justify="space-between">
+                        <Select placeholder="Add To~" w="20vw">
+                            {records.map(record =>
+                                <option onClick={submitEntry}>--{record.title}--</option>
+                            )}
+                        </Select>
                         <DeleteEntryIcon />
                     </Flex>
                         <form onSubmit={submitEntry}>

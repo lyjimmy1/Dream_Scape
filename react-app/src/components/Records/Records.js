@@ -37,13 +37,15 @@ const AllRecords = ()=>{
                             <Td>
                                 <List spacing={5} >
                                     {records.map(record =>
-                                    <ListItem >
-                                        <ListIcon as={GiSecretBook} />
-                                        {record.title}
-                                        {console.log(record, "HELLO THIS SHOULD BE RECORD")}
-                                        <UpdateRecordMenu props={record}/>
-                                        <Divider />
-                                    </ListItem>)}
+                                    <Flex justify="space-around">
+                                        <ListItem >
+                                            <ListIcon as={GiSecretBook} />
+                                            {record.title}
+                                            {console.log(record, "HELLO THIS SHOULD BE RECORD")}
+                                            <UpdateRecordMenu props={record}/>
+                                            <Divider />
+                                        </ListItem>
+                                    </Flex>)}
                                 </List>
                             </Td>
                         </Tr>
