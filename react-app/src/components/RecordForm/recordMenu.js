@@ -20,11 +20,9 @@ const UpdateRecordMenu =({props})=>{
     const dispatch = useDispatch()
     const [title, setTitle]=useState(props.title)
     const { isOpen, onOpen, onClose} = useDisclosure()
-    console.log(props, "HELLO THIS IS MY CURRENT RECORD")
 
     const updateTitle=(e)=>{
         setTitle(e.target.value)
-        console.log("is this even hitting?", title)
     }
 
     const submitUpdatedRecord = async(e)=>{
@@ -61,7 +59,7 @@ const UpdateRecordMenu =({props})=>{
                                                 mb={3}
                                             />
                                         </div>
-                                        <Button type='submit'>Change Title</Button>
+                                        <Button onClick={onClose} type='submit'>Change Title</Button>
                                     </form>
                                 </ModalBody>
                             </ModalContent>

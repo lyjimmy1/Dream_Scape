@@ -39,7 +39,7 @@ export const obtainRecords = () =>async(dispatch) =>{
 export const updateRecord = (payload) =>async (dispatch) =>{
     const {props, title} = payload;
 
-    const response = await fetch(`/api/record/${payload.props.id}`, {
+    const response = await fetch(`/api/record/edit-record/${payload.props.id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ export default function reducer(state = initialState, action){
             return newState
         case EDIT_RECORD:
             newState={...state}
-            newState.records[action.payload.props.id] = action.payload
+            newState.records[action.payload.id] = action.payload
             return newState
         default:
             return state;
