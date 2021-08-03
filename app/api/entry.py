@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, json
 from flask_login import current_user
 from app.models import Entry, db
 from app.forms import EntryForm
@@ -46,6 +46,8 @@ def new_entry():
 
 @entries_routes.route('/edit-entry/<int:id>', methods=["PATCH"])
 def edit_entry(id):
+    entry_data=json.loads(request.data.decode())
+    print(entry_data, "OK THIS SHOULD BE THE PAYLOAD NOW")
     form = EntryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -53,13 +55,12 @@ def edit_entry(id):
         user=current_user.id
         title=form.data['title']
         content=form.data['content']
-        record=form.data['record_id']
 
 
         entry_to_be_edited.title=title
         entry_to_be_edited.content=content
         entry_to_be_edited.user_id=user
-        entry_to_be_edited.record_id=record
+        entry_to_be_edited.record_id=entry_data['record_id']
 
         db.session.commit()
         return entry_to_be_edited.to_dict()

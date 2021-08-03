@@ -67,6 +67,7 @@ export const makeEntry = (payload) => async(dispatch) =>{
 }
 
 export const updateEntry =(payload)=>async (dispatch) => {
+    console.log(payload.record_id, "THIS SHOULD BE THE RECORD ID")
     const response = await fetch (`/api/entry/edit-entry/${payload.id}`,{
         method: "PATCH",
         headers:{

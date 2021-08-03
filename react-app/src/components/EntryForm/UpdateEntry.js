@@ -14,12 +14,10 @@ const UpdateEntry =()=>{
     const{id} = useParams()
     const history=useHistory()
     const entries = useSelector(state => state.entry.entries[id])
-    console.log(entries)
     const records = useSelector(state => Object.values(state.record.records))
     const [title, setTitle] = useState(entries?.title)
     const [content, setContent]=useState(entries?.content)
-    const [record_id, setRecordId]=useState(entries.record_id)
-    console.log(record_id, "THIS IS THE RECORD ID")
+    const [record_id, setRecordId]=useState(entries?.record_id)
 
 
 
@@ -39,16 +37,12 @@ const UpdateEntry =()=>{
 
     const cancelForm= (e) =>{
         e.preventDefault()
-
         history.push("/home")
     }
 
     const submitEntry = async (e) =>{
         e.preventDefault();
-        const payload = {id, title, content, record_id}
-        console.log(payload.record_id, "THIS SHOULD BE THE RECORD ID AGAIN")
-
-        const addRecordId = await dispatch(makeEntry(payload))
+        const payload = {id, title, content, record_id} 
         const sendEntry = await dispatch(updateEntry(payload))
         history.push("/home")
     }
@@ -60,7 +54,7 @@ const UpdateEntry =()=>{
                         <DeleteEntryIcon />
                     </Flex>
                         <form onSubmit={submitEntry}>
-                            <Select placeholder="Add To~" w="20vw" onChange={updateRecord}>
+                            <Select placeholder="Add To~" w="20vw" onChange={updateRecord} value={record_id}>
                                 {records.map(record =>
                                     <option value={record.id}>--{record.title}--</option>
                                 )}

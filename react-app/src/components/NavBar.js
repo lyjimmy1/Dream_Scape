@@ -28,7 +28,9 @@ const NavBar = () => {
       <>
 
       <Flex bg="purple.200" h="100px" w="100%" color="white" p={6}>
-        <Image  justify="flex-start" align="center" src={cuteMoon} height='80px' mb={3}/>
+        <NavLink to="/home" exact={true} activeClassName="active">
+          <Image  justify="flex-start" align="center" src={cuteMoon} height='80px' mb={3}/>
+        </NavLink>
         <Heading mt={5} align="center" color="purple" fontSize="lg">DREAM SCAPE</Heading>
         <Spacer />
         <Flex justify="flex-end" >
