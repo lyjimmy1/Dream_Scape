@@ -42,14 +42,14 @@ const UpdateEntry =()=>{
 
     const submitEntry = async (e) =>{
         e.preventDefault();
-        const payload = {id, title, content, record_id} 
+        const payload = {id, title, content, record_id}
         const sendEntry = await dispatch(updateEntry(payload))
         history.push("/home")
     }
     return(
         <Flex>
             <SideBar/>
-                <Flex width="100%" mt='2.5vh' direction="column" background="gray.100" p={12} rounded={12}>
+                <Flex width="87%" margin="auto" direction="column" background="gray.100" p={12} rounded={12}>
                     <Flex justify="flex-end">
                         <DeleteEntryIcon />
                     </Flex>

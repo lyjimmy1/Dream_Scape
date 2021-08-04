@@ -1,34 +1,22 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { useHistory, Link } from 'react-router-dom';
-import {Flex, Avatar, Heading, Text, IconButton, Divider, useDisclosure, Spacer} from "@chakra-ui/react"
-import {GiSecretBook, GiBookshelf, GiStabbedNote} from 'react-icons/gi'
+import { useHistory } from 'react-router-dom';
+import {Flex, Avatar, Heading, Text, IconButton, Divider, useDisclosure, Spacer, Link} from "@chakra-ui/react"
+import {GiSecretBook, GiBookshelf, GiStabbedNote, GiArchiveResearch} from 'react-icons/gi'
 import {RiMoonClearFill} from 'react-icons/ri'
 import {FiLogOut} from 'react-icons/fi'
 import {logout} from "../../store/session"
 import RecordForm from '../RecordForm/recordform'
-import SearchBar from '../Search/Searchbar'
+import SearchModal from '../Search/SearchModal'
+
 
 const SideBar = () =>{
 
     const user = useSelector(state => state.session.user)
-    const entries = useSelector(state => Object.values(state.entry.entries))
     const history = useHistory()
     const dispatch= useDispatch()
     const { isOpen, onOpen, onClose} = useDisclosure()
-    const [searchQuery, setSearchQuery] = useState('');
 
-    const filterEntries =(entries, query) =>{
-        if (!query){
-            return entries;
-        }
-        return entries.filter((entry) =>{
-            const entryTitle = entry.title.toLowerCase();
-            return entryTitle.includes(query);
-        })
-    }
-
-    const filteredEntries = filterEntries(entries, searchQuery)
 
     const makeEntry= async (e) => {
         e.preventDefault()
@@ -60,7 +48,7 @@ const SideBar = () =>{
         direction="column"
         justifyContent="flex-start"
         background="purple.100"
-        boxShadow='md'>
+        boxShadow={"5px 5px 5px gray"}>
 
             <Flex align="center" ml={3} mb={3} mt={3}>
                 <Avatar size="sm"/>
@@ -70,74 +58,84 @@ const SideBar = () =>{
                 </Flex>
             </Flex>
 
-            <Divider  orientation="horizontal" colorScheme="purple"/>
+            <Divider  orientation="horizontal" colorScheme="black"/>
 
-
-            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={goHome}>
-                <IconButton
-                as={RiMoonClearFill}
-                ml={3}
-                borderRadius='md'
-                colorScheme="purple"
-                aria-label="Redirects to Home"
-                onClick={goHome}
-                />
-                <Flex direction="column" ml={3}>
-                        <Text>Home</Text>
+            <Link mt={3} mb={3} _hover={{background: "purple.200"}}>
+                <Flex align="center"  onClick={goHome}>
+                    <IconButton
+                    as={RiMoonClearFill}
+                    ml={3}
+                    borderRadius='md'
+                    colorScheme="purple"
+                    aria-label="Redirects to Home"
+                    onClick={goHome}
+                    />
+                    <Flex direction="column" ml={3}>
+                            <Text>Home</Text>
+                    </Flex>
                 </Flex>
-            </Flex>
+            </Link>
 
-            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={makeEntry}>
-                <IconButton
-                as={GiStabbedNote}
-                ml={3}
-                borderRadius='md'
-                colorScheme="purple"
-                aria-label="Creates an Entry"
-                onClick={makeEntry}
-                />
-                <Flex direction="column" ml={3}>
-                        <Text>New Dream Entry</Text>
+            <Link mt={3} mb={3} _hover={{background: "purple.200"}}>
+                <Flex align="center"  onClick={makeEntry}>
+                    <IconButton
+                    as={GiStabbedNote}
+                    ml={3}
+                    borderRadius='md'
+                    colorScheme="purple"
+                    aria-label="Creates an Entry"
+                    onClick={makeEntry}
+                    />
+                    <Flex direction="column" ml={3}>
+                            <Text>New Dream Entry</Text>
+                    </Flex>
                 </Flex>
-            </Flex>
+            </Link>
 
-            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={onOpen}>
-                <IconButton
-                as={GiSecretBook}
-                ml={3}
-                borderRadius='md'
-                colorScheme="purple"
-                aria-label="Creates a Record"
-                />
-                <Flex direction="column" ml={3}>
-                    <RecordForm />
+            <Link mt={3} mb={3} _hover={{background: "purple.200"}}>
+                <Flex align="center" >
+                    <IconButton
+                    as={GiSecretBook}
+                    ml={3}
+                    borderRadius='md'
+                    colorScheme="purple"
+                    aria-label="Creates a Record"
+                    />
+                    <Flex direction="column" ml={3}>
+                        <RecordForm />
+                    </Flex>
                 </Flex>
-            </Flex>
+            </Link>
 
-            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={goRecords}>
-                <IconButton
-                as={GiBookshelf}
-                ml={3}
-                borderRadius='md'
-                colorScheme="purple"
-                aria-label="Redirects to Records page"
-                />
-                <Flex direction="column" ml={3}>
-                        <Text>View Records</Text>
+            <Link mt={3} mb={3} _hover={{background: "purple.200"}}>
+                <Flex align="center" onClick={goRecords}>
+                    <IconButton
+                    as={GiBookshelf}
+                    ml={3}
+                    borderRadius='md'
+                    colorScheme="purple"
+                    aria-label="Redirects to Records page"
+                    />
+                    <Flex direction="column" ml={3}>
+                            <Text>View Records</Text>
+                    </Flex>
                 </Flex>
-            </Flex>
+            </Link>
 
-            <Flex align="center" mt={3} mb={3}>
-                <SearchBar
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}
-                />
-                <ul>
-                    {filteredEntries.map((entry) =>(
-                        <Link to={`/entry-form/${entry.id}`}key={entry.id}>{entry.title}</Link>
-                    ))}
-                </ul>
-            </Flex>
+            <Link mt={3} mb={3} _hover={{background: "purple.200"}}>
+                <Flex align="center" >
+                    <IconButton
+                    as={GiArchiveResearch}
+                    ml={3}
+                    borderRadius='md'
+                    colorScheme="purple"
+                    aria-label="Renders a search modal"
+                    />
+                    <Flex direction="column" ml={3}>
+                            <SearchModal />
+                    </Flex>
+                </Flex>
+            </Link>
 
             <Spacer />
 

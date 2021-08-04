@@ -26,7 +26,6 @@ const SearchBar = ({searchQuery, setSearchQuery})=>{
                     onChange={e => setSearchQuery(e.target.value)}
                     type="text"
                     placeholder="Search"
-                    color="purple.500"
                     name="s"/>
             </InputGroup>
         </FormControl>

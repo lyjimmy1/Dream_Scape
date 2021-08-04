@@ -30,9 +30,9 @@ const EntryForm = ()=>{
     }
 
     return(
-        <Flex>
+        <Flex >
             <SideBar />
-            <Flex  width="100%" mt='2.5vh' direction="column" background="gray.100" p={12} rounded={12}>
+            <Flex width="87%" margin="auto" mt='2.5vh' direction="column" background="gray.100" p={12} rounded={12}>
                 <form onSubmit={submitEntry}>
                     <div>
                         <label htmlFor="title">Title</label>
