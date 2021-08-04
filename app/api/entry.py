@@ -36,7 +36,6 @@ def new_entry():
         new_entry=Entry(
             title=form.data['title'],
             content=form.data['content'],
-            record_id=form.data['record_id'],
             user_id=user
         )
         db.session.add(new_entry)

@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from 'react-router-dom'
 import {
     FormControl,
     FormLabel,
@@ -9,18 +10,27 @@ import {
 
 import {GiArchiveResearch} from "react-icons/gi"
 
-const SearchBar = ()=>{
+const SearchBar = ({searchQuery, setSearchQuery})=>{
 
-
+    const history = useHistory();
+    const submitSearch = (e) =>{
+        history.push(`/entry-form/${}`)
+    }
 
     return(
-        <FormControl id="search" background="purple.300">
+        <FormControl id="search" background="purple.100" onSubmit>
             <InputGroup>
                 <InputLeftElement
                     pointerEvents="none"
                     children={<GiArchiveResearch />}
                 />
-                <Input type="text" placeholder="Search" color="white.300"/>
+                <Input
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    type="text"
+                    placeholder="Search"
+                    color="purple.500"
+                    name="s"/>
             </InputGroup>
         </FormControl>
     )

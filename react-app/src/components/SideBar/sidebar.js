@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import {Flex, Avatar, Heading, Text, IconButton, Divider, useDisclosure, Spacer} from "@chakra-ui/react"
@@ -12,9 +12,27 @@ import SearchBar from '../Search/Searchbar'
 const SideBar = () =>{
 
     const user = useSelector(state => state.session.user)
+    const entries = useSelector(state => Object.values(state.entry.entries))
     const history = useHistory()
     const dispatch= useDispatch()
     const { isOpen, onOpen, onClose} = useDisclosure()
+
+    const {search} = window.location
+    const query = new URLSearchParams(search).get('s');
+    console.log(query, "this is the query")
+    const [searchQuery, setSearchQuery] = useState(query || '');
+
+    const filterEntries =(entries, query) =>{
+        if (!query){
+            return entries;
+        }
+        return entries.filter((entry) =>{
+            const entryTitle = entry.title.toLowerCase();
+            return entryTitle.includes(query);
+        })
+    }
+
+    const filteredEntries = filterEntries(entries, searchQuery)
 
     const makeEntry= async (e) => {
         e.preventDefault()
@@ -114,7 +132,15 @@ const SideBar = () =>{
             </Flex>
 
             <Flex align="center" mt={3} mb={3}>
-                <SearchBar />
+                <SearchBar
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                />
+                <ul>
+                    {filteredEntries.map((entry) =>(
+                        <li key={entry.id}>{entry.title}</li>
+                    ))}
+                </ul>
             </Flex>
 
             <Spacer />
