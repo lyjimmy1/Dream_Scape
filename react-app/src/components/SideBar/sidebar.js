@@ -7,6 +7,7 @@ import {RiMoonClearFill} from 'react-icons/ri'
 import {FiLogOut} from 'react-icons/fi'
 import {logout} from "../../store/session"
 import RecordForm from '../RecordForm/recordform'
+import SearchBar from '../Search/Searchbar'
 
 const SideBar = () =>{
 
@@ -57,6 +58,7 @@ const SideBar = () =>{
 
             <Divider  orientation="horizontal" colorScheme="purple"/>
 
+
             <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={goHome}>
                 <IconButton
                 as={RiMoonClearFill}
@@ -85,7 +87,7 @@ const SideBar = () =>{
                 </Flex>
             </Flex>
 
-            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}}>
+            <Flex align="center" mt={3} mb={3} _hover={{background: "purple.200"}} onClick={onOpen}>
                 <IconButton
                 as={GiSecretBook}
                 ml={3}
@@ -94,7 +96,7 @@ const SideBar = () =>{
                 aria-label="Creates a Record"
                 />
                 <Flex direction="column" ml={3}>
-                        <RecordForm onClick={onOpen}/>
+                    <RecordForm />
                 </Flex>
             </Flex>
 
@@ -109,6 +111,10 @@ const SideBar = () =>{
                 <Flex direction="column" ml={3}>
                         <Text>View Records</Text>
                 </Flex>
+            </Flex>
+
+            <Flex align="center" mt={3} mb={3}>
+                <SearchBar />
             </Flex>
 
             <Spacer />
