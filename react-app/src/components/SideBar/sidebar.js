@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import {Flex, Avatar, Heading, Text, IconButton, Divider, useDisclosure, Spacer} from "@chakra-ui/react"
 import {GiSecretBook, GiBookshelf, GiStabbedNote} from 'react-icons/gi'
 import {RiMoonClearFill} from 'react-icons/ri'
@@ -16,11 +16,7 @@ const SideBar = () =>{
     const history = useHistory()
     const dispatch= useDispatch()
     const { isOpen, onOpen, onClose} = useDisclosure()
-
-    const {search} = window.location
-    const query = new URLSearchParams(search).get('s');
-    console.log(query, "this is the query")
-    const [searchQuery, setSearchQuery] = useState(query || '');
+    const [searchQuery, setSearchQuery] = useState('');
 
     const filterEntries =(entries, query) =>{
         if (!query){
@@ -138,7 +134,7 @@ const SideBar = () =>{
                 />
                 <ul>
                     {filteredEntries.map((entry) =>(
-                        <li key={entry.id}>{entry.title}</li>
+                        <Link to={`/entry-form/${entry.id}`}key={entry.id}>{entry.title}</Link>
                     ))}
                 </ul>
             </Flex>

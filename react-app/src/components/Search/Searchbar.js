@@ -12,13 +12,10 @@ import {GiArchiveResearch} from "react-icons/gi"
 
 const SearchBar = ({searchQuery, setSearchQuery})=>{
 
-    const history = useHistory();
-    const submitSearch = (e) =>{
-        history.push(`/entry-form/${}`)
-    }
+
 
     return(
-        <FormControl id="search" background="purple.100" onSubmit>
+        <FormControl id="search" background="purple.100" >
             <InputGroup>
                 <InputLeftElement
                     pointerEvents="none"
