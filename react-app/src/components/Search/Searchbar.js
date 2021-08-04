@@ -15,7 +15,7 @@ const SearchBar = ({searchQuery, setSearchQuery})=>{
 
 
     return(
-        <FormControl id="search" background="purple.100" >
+        <FormControl id="search" >
             <InputGroup>
                 <InputLeftElement
                     pointerEvents="none"

@@ -2,3 +2,14 @@
     overflow: auto;
     white-space: nowrap;
 }
+
+.entry-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height:80%;
+}
+
+.entry-date{
+    justify-self: flex-end;
+}

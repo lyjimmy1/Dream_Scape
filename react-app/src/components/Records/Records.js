@@ -41,7 +41,6 @@ const AllRecords = ()=>{
                                         <ListItem >
                                             <ListIcon as={GiSecretBook} />
                                             {record.title}
-                                            {console.log(record, "HELLO THIS SHOULD BE RECORD")}
                                             <UpdateRecordMenu props={record}/>
                                             <Divider />
                                         </ListItem>
