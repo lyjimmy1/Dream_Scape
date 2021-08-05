@@ -1,0 +1,13 @@
+.entry-list-option{
+    list-style-type: none;
+    border-radius: 5px;
+    border-bottom: 1px solid black;
+}
+
+.entry-list-option > a {
+    margin-left: 5px;
+}
+
+.entry-list-option:hover{
+    background-color: rgb(216, 133, 241);
+}

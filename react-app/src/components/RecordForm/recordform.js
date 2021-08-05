@@ -36,7 +36,7 @@ const RecordForm =()=>{
                 <ModalContent>
                     <ModalHeader>Create a Record</ModalHeader>
                     <ModalCloseButton/>
-                    <ModalBody>
+                    <ModalBody mb={4}>
                         <form onSubmit={submitRecord}>
                             <div>
                                 <Input

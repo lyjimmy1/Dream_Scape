@@ -17,10 +17,10 @@ const AllEntries =()=>{
 
 
     return(
-        <SimpleGrid columns={5}  spacing={10} marginTop="2.5vh" ml={2.5}>
+        <SimpleGrid  columns={5}  spacing={10} marginTop="2.5vh" ml={3.5}>
             {entries.map(entry=>
                 <LinkBox w="200px" h="200px" borderRadius="md" bg="teal.100" key={entry.id} boxShadow={"5px 5px 5px gray"} to={`/entry-form/${entry.id}`}>
-                    <LinkOverlay ml={2} mt={2} as={ReactLink} to={`/entry-form/${entry.id}`}>
+                    <LinkOverlay ml={2} mt={1} as={ReactLink} to={`/entry-form/${entry.id}`}>
                         <div className="entry-container">
                             <div className="entry-title">
                                 {entry.title}
@@ -30,7 +30,7 @@ const AllEntries =()=>{
                             </div>
                             <Spacer />
                             <div className="entry-date">
-                                <Text overflow="hidden" color="gray.400">{entry.created_at}</Text>
+                                <Text overflow="hidden" color="gray.400">{entry.created_at.toString().split(" ").splice(1,3).join(" ")}</Text>
                             </div>
                         </div>
                     </LinkOverlay>

@@ -9,7 +9,7 @@ import {Input, Button, Modal,
     ModalCloseButton,
     useDisclosure, Text, Container, Flex} from "@chakra-ui/react"
 import SearchBar from '../Search/Searchbar'
-
+import './search.css'
 
 
 const SearchModal =()=>{
@@ -45,14 +45,15 @@ const SearchModal =()=>{
                         setSearchQuery={setSearchQuery}
                         />
                         <Flex padding={5}>
-                            <Container background="gray.200">
+                            <Container >
+                                {searchQuery.length > 0 &&
                                 <ul>
                                     {filteredEntries.map((entry) =>(
-                                        <li>
+                                        <li className="entry-list-option">
                                             <Link to={`/entry-form/${entry.id}`}key={entry.id}>{entry.title}</Link>
                                         </li>
                                     ))}
-                                </ul>
+                                </ul>}
                             </Container>
                         </Flex>
                     </ModalBody>
