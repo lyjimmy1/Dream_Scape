@@ -3,3 +3,8 @@ body{
     background-size: cover !important;
     background-repeat: no-repeat !important;
 }
+
+body > img{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}

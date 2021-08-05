@@ -49,7 +49,7 @@ const UpdateEntry =()=>{
     return(
         <Flex>
             <SideBar/>
-                <Flex width="87%" mt="2.5vh" margin="auto" direction="column" background="gray.100" p={12} rounded={12}>
+                <Flex width="auto" mt="2.5vh" margin="auto" direction="column" background="gray.100" p={12} rounded={12}>
                     <Flex justify="flex-end">
                         <DeleteEntryIcon />
                     </Flex>
