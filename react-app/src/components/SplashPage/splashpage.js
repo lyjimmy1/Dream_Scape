@@ -6,7 +6,7 @@ import './splashpage.css'
 function SplashPage(){
 
     return(
-        <Flex className="background-img"/>
+        <div className="background-img"/>
 
     )
 }

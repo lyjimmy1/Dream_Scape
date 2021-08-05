@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import {Heading, Flex, Input, Button} from "@chakra-ui/react"
 import { demoUser } from "../../store/session";
+import './auth.css'
 
 const LoginForm = () => {
   const dispatch = useDispatch();

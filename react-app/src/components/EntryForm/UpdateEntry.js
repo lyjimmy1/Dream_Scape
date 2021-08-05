@@ -49,7 +49,7 @@ const UpdateEntry =()=>{
     return(
         <Flex>
             <SideBar/>
-                <Flex width="87%" margin="auto" direction="column" background="gray.100" p={12} rounded={12}>
+                <Flex width="87%" mt="2.5vh" margin="auto" direction="column" background="gray.100" p={12} rounded={12}>
                     <Flex justify="flex-end">
                         <DeleteEntryIcon />
                     </Flex>
@@ -81,8 +81,8 @@ const UpdateEntry =()=>{
                                 />
                             </div>
                             <Flex justify="space-between">
-                                <Button mt={3} onClick={cancelForm} type='submit'>Cancel</Button>
-                                <Button mt={3} type='submit'>Accept Changes</Button>
+                                <Button  onClick={cancelForm} type='submit'>Cancel</Button>
+                                <Button  type='submit'>Accept Changes</Button>
                             </Flex>
                         </form>
                 </Flex>
