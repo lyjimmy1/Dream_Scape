@@ -7,7 +7,7 @@ import './splashpage.css'
 function SplashPage(){
 
     return(
-        <img src={dream} alt="Splash Img"/>
+        <img className="splash-img"src={dream} alt="Splash Img"/>
 
     )
 }
