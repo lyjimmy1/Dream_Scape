@@ -14,6 +14,7 @@ import {ChakraProvider} from "@chakra-ui/react"
 import UpdateEntry from "./components/EntryForm/UpdateEntry"
 import HomePage from "./components/HomePage/HomePage";
 import AllRecords from "./components/Records/Records"
+import Footer from "./components/Footer/Footer"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -64,6 +65,7 @@ function App() {
             <HomePage />
           </ProtectedRoute>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </ChakraProvider>
   );

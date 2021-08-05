@@ -1,0 +1,21 @@
+.footerContainer{
+    background-color: #d6bcfa;
+    padding: 1%;
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footerContainer a{
+    text-decoration: none;
+    color: black;
+}
+
+.jimmy-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footIcon{
+    margin-left: 4px;
+}

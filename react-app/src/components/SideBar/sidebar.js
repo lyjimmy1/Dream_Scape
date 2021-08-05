@@ -41,7 +41,7 @@ const SideBar = () =>{
 
     return(
         <Flex pos="sticky"
-         h="95vh" ml={2}
+         h="auto" ml={2}
         marginTop="2.5vh"
         w="200px"
         borderRadius='md'

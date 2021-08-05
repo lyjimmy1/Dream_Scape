@@ -12,13 +12,22 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(full_name, username, email, password));
+      if(data.errors){
+        setErrors(data.errors)
+      }
     }
+
+    if(password !== repeatPassword){
+      return setErrors(['Passwords do not match!'])
+    }
+
   };
 
   const updateName = (e) => {
@@ -51,6 +60,11 @@ const SignUpForm = () => {
         <Flex direction="column" background="purple.100" p={12} rounded={12} >
           <Heading>Sign Up</Heading>
           <form onSubmit={onSignUp}>
+            <div className='errors3'>
+            {errors.map((error, idx) => (
+              <div key={idx}>{error}</div>
+            ))}
+            </div>
             <div>
               <Input
                 type="text"
