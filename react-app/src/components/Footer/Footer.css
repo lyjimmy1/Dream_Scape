@@ -14,9 +14,14 @@
 
 .jimmy-container{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .footIcon{
-    margin-left: 4px;
+    margin-left: 6px;
+    font-size: 30px;
+}
+
+.name-p{
+    font-size: large;
 }

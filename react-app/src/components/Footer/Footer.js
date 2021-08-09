@@ -6,7 +6,7 @@ function Footer(){
     return(
         <footer className="footerContainer">
             <div className="jimmy-container">
-                <a className="jimmy"href="https://github.com/lyjimmy1" target="_blank">Jimmy Ly</a>
+                <p className="name-p">Developed by Jimmy Ly</p>
                 <a className="jimmy"href="https://github.com/lyjimmy1" target="_blank">
                     <FaGithub className="footIcon"/>
                 </a>

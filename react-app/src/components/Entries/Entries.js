@@ -26,7 +26,7 @@ const AllEntries =()=>{
                                 {entry.title}
                             </div>
                             <div className="entry-content">
-                                <Text padding={1} overflow="ellipsis" color="gray.400">{entry.content.replace(/<[^>]*>/g, '')}</Text>
+                                <Text padding={1} color="gray.400">{entry.content.replace(/<[^>]*>/g, '')}</Text>
                             </div>
                             <Spacer />
                             <div className="entry-date">

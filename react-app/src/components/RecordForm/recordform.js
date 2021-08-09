@@ -24,6 +24,7 @@ const RecordForm =()=>{
     const submitRecord = async(e)=>{
         e.preventDefault();
         const sendRecord= await dispatch(makeRecord({title}))
+        setTitle("")
     }
 
 

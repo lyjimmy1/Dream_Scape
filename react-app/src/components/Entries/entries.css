@@ -3,6 +3,11 @@
     white-space: nowrap;
 }
 
+.entry-content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .entry-container{
     display: flex;
     flex-direction: column;
