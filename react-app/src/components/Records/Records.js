@@ -1,23 +1,31 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {obtainRecords} from '../../store/record'
-import {Flex, List, ListItem, ListIcon, Table,Thead,Tbody,Tr,Th,Td,TableCaption, Container,Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-   IconButton, Divider} from '@chakra-ui/react'
+import {obtainEntries} from '../../store/entry'
+import {Flex, List, ListItem, ListIcon, Table,Thead,Tbody,Tr,Th,Td,TableCaption, Container, Divider} from '@chakra-ui/react'
 import {GiSecretBook} from 'react-icons/gi'
-import {HamburgerIcon, EditIcon, DeleteIcon} from '@chakra-ui/icons'
 import SideBar from '../SideBar/sidebar'
 import UpdateRecordMenu from '../RecordForm/recordMenu';
 
 const AllRecords = ()=>{
     const dispatch = useDispatch()
     const records = useSelector(state => Object.values(state.record.records))
+    const entries = useSelector(state => Object.values(state.entry.entries))
+    console.log(records)
+
+    const displayNumber = (recordId) =>{
+
+        const filledRecord = entries.filter(entry => entry.record_id === recordId)
+
+        if(filledRecord.length){
+            return ` (${filledRecord.length})`
+        }
+    }
 
 
     useEffect(async()=>{
         await dispatch(obtainRecords())
+        await dispatch(obtainEntries())
     }, [dispatch])
 
 
@@ -26,10 +34,10 @@ const AllRecords = ()=>{
             <SideBar />
             <Container>
                 <Table variant="striped" colorScheme="gray">
-                    <TableCaption>---End of List---</TableCaption>
+                    <TableCaption color="white">---End of List---</TableCaption>
                     <Thead>
                         <Tr>
-                            <Th size="large">Records</Th>
+                            <Th color="white" size="large">Records</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -41,6 +49,7 @@ const AllRecords = ()=>{
                                         <ListItem >
                                             <ListIcon as={GiSecretBook} />
                                             {record.title}
+                                            {displayNumber(record.id)}
                                             <UpdateRecordMenu props={record}/>
                                             <Divider />
                                         </ListItem>

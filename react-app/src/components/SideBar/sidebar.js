@@ -34,8 +34,10 @@ const SideBar = () =>{
     }
 
     const logOut = async(e)=>{
-        e.preventDefault()
+
         await dispatch(logout());
+
+        window.location.href = "/"
     }
 
 
@@ -139,7 +141,8 @@ const SideBar = () =>{
 
             <Spacer />
 
-            <Flex align="flex-end" mt={3} mb={10} _hover={{background: "purple.200"}} onClick={logOut}>
+            <Link align="flex-end" mt={3} mb={10} _hover={{background: "purple.200"}} onClick={logOut}>
+                <Flex align="center">
                 <IconButton
                 as={FiLogOut}
                 ml={3}
@@ -151,7 +154,8 @@ const SideBar = () =>{
                 <Flex direction="column" ml={3}>
                         <Text>Log Out</Text>
                 </Flex>
-            </Flex>
+                </Flex>
+            </Link>
         </Flex>
     )
 }
