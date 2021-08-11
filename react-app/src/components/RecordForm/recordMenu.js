@@ -12,7 +12,7 @@ import {Input, Button, Modal,
     MenuItem,
    IconButton,} from "@chakra-ui/react"
 import {HamburgerIcon, EditIcon, DeleteIcon} from '@chakra-ui/icons'
-import {updateRecord} from "../../store/record"
+import {updateRecord, deleteRecord} from "../../store/record"
 
 
 
@@ -29,6 +29,12 @@ const UpdateRecordMenu =({props})=>{
         e.preventDefault();
 
         const sendRecord= await dispatch(updateRecord({title, props}))
+    }
+
+    const removeRecord = async(e)=>{
+        e.preventDefault();
+        const payload = props
+        const deletedRecord = await dispatch(deleteRecord(payload))
     }
 
     return(
@@ -65,7 +71,7 @@ const UpdateRecordMenu =({props})=>{
                             </ModalContent>
                         </Modal>
                     </MenuItem>
-                    <MenuItem icon={<DeleteIcon />}>
+                    <MenuItem icon={<DeleteIcon />} onClick={removeRecord}>
                         Delete Record
                     </MenuItem>
                 </MenuList>

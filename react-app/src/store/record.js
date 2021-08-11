@@ -6,6 +6,8 @@ const GET_RECORDS ="record/GET_RECORDS"
 
 const EDIT_RECORD = "record/EDIT_RECORD"
 
+const REMOVE_RECORD = "record/REMOVE_RECORD"
+
 //action creators
 
 const addRecord=(payload)=>({
@@ -20,6 +22,11 @@ const getRecords = (payload)=>({
 
 const editRecord = (payload) =>({
     type: EDIT_RECORD,
+    payload
+})
+
+const removeRecord = (payload) =>({
+    type: REMOVE_RECORD,
     payload
 })
 
@@ -77,6 +84,22 @@ export const makeRecord = (payload) => async (dispatch)=>{
     dispatch(addRecord(data))
 }
 
+export const deleteRecord = (payload)=> async (dispatch)=>{
+    const response = await fetch(`/api/record/${payload.id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    if(data.errors){
+        return data
+    }
+
+    dispatch(removeRecord(data))
+}
+
 const initialState = {records: {}}
 
 export default function reducer(state = initialState, action){
@@ -95,6 +118,10 @@ export default function reducer(state = initialState, action){
         case EDIT_RECORD:
             newState={...state}
             newState.records[action.payload.id] = action.payload
+            return newState
+        case REMOVE_RECORD:
+            newState={...state}
+            delete newState.records[action.payload['id of record to be deleted']]
             return newState
         default:
             return state;
