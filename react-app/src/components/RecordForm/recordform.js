@@ -32,7 +32,7 @@ const RecordForm =()=>{
         <>
             <Text onClick={onOpen}>New Record</Text>
 
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={onClose} blockScrollOnMount={false}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>Create a Record</ModalHeader>

@@ -6,12 +6,14 @@ import {Flex, List, ListItem, ListIcon, Table,Thead,Tbody,Tr,Th,Td,TableCaption,
 import {GiSecretBook} from 'react-icons/gi'
 import SideBar from '../SideBar/sidebar'
 import UpdateRecordMenu from '../RecordForm/recordMenu';
+import RecordDropDown from '../RecordForm/recordDropDown';
 
 const AllRecords = ()=>{
     const dispatch = useDispatch()
     const records = useSelector(state => Object.values(state.record.records))
     const entries = useSelector(state => Object.values(state.entry.entries))
-    console.log(records)
+
+
 
     const displayNumber = (recordId) =>{
 
@@ -48,6 +50,7 @@ const AllRecords = ()=>{
                                     <Flex justify="space-around">
                                         <ListItem >
                                             <ListIcon as={GiSecretBook} />
+                                            <RecordDropDown props={record} />
                                             {record.title}
                                             {displayNumber(record.id)}
                                             <UpdateRecordMenu props={record}/>

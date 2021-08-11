@@ -34,7 +34,7 @@ const SearchModal =()=>{
         <>
             <Text onClick={onOpen}>Search</Text>
 
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={onClose} blockScrollOnMount={false}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>Search For An Entry</ModalHeader>
