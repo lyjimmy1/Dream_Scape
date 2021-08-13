@@ -28,5 +28,5 @@ Dream Scape is a full-stack web application. Backend technologies include Python
 
 Dream was a fun project that I enjoyed immensely. Driven by a real life event that took place, I was estatic that I was able to bring this idea to fruition. This project challenged my knowledge and limitations as a software developer. Through much stress and frustration, I learned a lot about myself, my abilities as a software developer, and my mental capacity as a life long learner. This project was indeed a journey in itself and I couldn't be more pleased with the results. 
 
-However, there is much more work to do before I can consider this project finished. I plan to implement a "Record" feature where users can store their dreame entries into a Record. Users can also make multiple Records to store different types of dream entries. I also plan to implement a search feature so that Users can search for certain entries they have made and a tagging system to better categorize entries. 
+
 
