@@ -12,6 +12,9 @@ Equipped with a rich-text editor, each entry is personally customizable dependin
 
 ![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/dreamscapeUpdate.JPG)
 
+Users can also dynamically search for an entry by typing in the appropriate characters. The search bar will filter results immediately by managing the Redux state.
+
+![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/dreamscapesearch.JPG)
 
 
 
