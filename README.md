@@ -4,9 +4,17 @@
 
 ## What is Dream Scape?
 
-Dream Scape is a revolutionary full-stack web application that allows users to record and keep track of their dreams via entries. Equipped with a rich-text editor, each entry is personally customizable depending on the individual user. 
+Dream Scape is a revolutionary full-stack web application that allows users to record and keep track of their dreams via entries. 
 
-Users can create an entry for each dream encounter they have. Users can also update and delete an entry. Users are also able to personalize the contents of their entries through a rich text-editor API. 
+![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/dreamscapeHome.JPG)
+
+Equipped with a rich-text editor, each entry is personally customizable depending on the individual user. Users can create an entry for each dream encounter they have. Users can also update and delete an entry. 
+
+![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/dreamscapeUpdate.JPG)
+
+
+
+
 
 
 ## Technologies Used
