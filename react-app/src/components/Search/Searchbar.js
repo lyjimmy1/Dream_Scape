@@ -12,8 +12,6 @@ import {GiArchiveResearch} from "react-icons/gi"
 
 const SearchBar = ({searchQuery, setSearchQuery})=>{
 
-
-
     return(
         <FormControl id="search" >
             <InputGroup>
