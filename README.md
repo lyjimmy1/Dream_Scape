@@ -8,6 +8,9 @@ Dream Scape is a revolutionary full-stack web application that allows users to r
 
 ![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/dreamscapeHome.JPG)
 
+
+## Additional Features & Code Snippets 
+
 Equipped with a rich-text editor, each entry is personally customizable depending on the individual user. Users can create an entry for each dream encounter they have. Users can also update and delete an entry. 
 
 ![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/dreamscapeUpdate.JPG)
@@ -15,8 +18,10 @@ Equipped with a rich-text editor, each entry is personally customizable dependin
 Users can also dynamically search for an entry by typing in the appropriate characters. The search bar will filter results immediately by managing the Redux state.
 
 ![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/dreamscapesearch.JPG)
-![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/searchFunctionDreamScape.JPG)
 
+I wanted a way to dynamically filter through all the entries depending on whatever the user typed. I didn't want to search through my backend and into the database as that would result in tedious processes. I decided that I wanted to filter through the Redux state. In this situation and the nature of my app, it works out perfectly since Dream Scape is meant to be a personal web app. Meaning that the state is always accessible for that user only. I created a function that takes in all the entries that exist for that user and filter via a search query. Search query in this case is searchQuery and it utilizes a useState that depends on what the user types in. While filtering through the entries object obtained from the store, I only want the resulting array to include entries that contain characters/letters the user have typed in. 
+
+![](https://github.com/lyjimmy1/Dream_Scape/blob/main/assets/searchFunctionDreamScape.JPG)
 
 
 
