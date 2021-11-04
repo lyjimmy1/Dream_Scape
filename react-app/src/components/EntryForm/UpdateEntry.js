@@ -31,7 +31,7 @@ const UpdateEntry =()=>{
     }
 
     const updateRecord = (e) =>{
-        console.log(Number(e.target.value), "is this running")
+//         console.log(Number(e.target.value), "is this running")
         setRecordId(Number(e.target.value))
     }
 
