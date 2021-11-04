@@ -45,7 +45,7 @@ def create_record():
 def edit_record(id):
     form = RecordForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("IS THIS RUNNING")
+    # print("IS THIS RUNNING")
     if form.validate_on_submit():
         record_to_be_edited=Record.query.filter_by(id=id).first()
         title=form.data['title']

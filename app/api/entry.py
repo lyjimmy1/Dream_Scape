@@ -46,7 +46,7 @@ def new_entry():
 @entries_routes.route('/edit-entry/<int:id>', methods=["PATCH"])
 def edit_entry(id):
     entry_data=json.loads(request.data.decode())
-    print(entry_data, "OK THIS SHOULD BE THE PAYLOAD NOW")
+    # print(entry_data, "OK THIS SHOULD BE THE PAYLOAD NOW")
     form = EntryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

@@ -55,7 +55,7 @@ export const updateRecord = (payload) =>async (dispatch) =>{
     })
 
     const data=await response.json()
-    console.log(data, "THIS IS MY UPDATED DATA!!!!!!!")
+    // console.log(data, "THIS IS MY UPDATED DATA!!!!!!!")
     if(data.errors){
         return data
     }
